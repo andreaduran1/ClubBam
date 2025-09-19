@@ -1,5 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Colores principales -->
+    <color name="colorPrimary">#E6492D</color> <!-- Rojo principal (AppBar, botones) -->
+    <color name="colorOnPrimary">#FFFFFF</color> <!-- Texto sobre rojo -->
+
+    <color name="colorSecondary">#F57C6A</color> <!-- Rojo más claro (variantes de botón) -->
+    <color name="colorOnSecondary">#FFFFFF</color>
+
+    <!-- Fondo -->
+    <color name="colorBackground">#FFF8F7</color> <!-- Fondo muy claro -->
+    <color name="colorOnBackground">#000000</color>
+
+    <!-- Superficies -->
+    <color name="colorSurface">#FFFFFF</color> <!-- Tarjetas, inputs -->
+    <color name="colorOnSurface">#000000</color>
+
+    <!-- Estado de error/alerta -->
+    <color name="colorError">#B00020</color>
+    <color name="colorOnError">#FFFFFF</color>
+
+    <!-- Grises/otros -->
+    <color name="colorTextSecondary">#666666</color>
+    <color name="colorChipBackground">#FDE0DC</color>
 </resources>
