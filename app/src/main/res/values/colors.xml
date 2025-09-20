@@ -5,6 +5,7 @@
 
     <color name="colorSecondary">#F57C6A</color> <!-- Rojo más claro (variantes de botón) -->
     <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorText">#1E1F24</color>
 
     <!-- Fondo -->
     <color name="colorBackground">#FFF8F7</color> <!-- Fondo muy claro -->
