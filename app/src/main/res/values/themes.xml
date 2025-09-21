@@ -4,7 +4,7 @@
     <style name="Theme.ClubBam.Light" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!-- Colores principales -->
-        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimaryTomato</item>
         <item name="colorOnPrimary">@color/colorOnPrimary</item>
 
         <item name="colorSecondary">@color/colorSecondary</item>

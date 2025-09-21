@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/validacionDoc"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:backgroundTint="@color/colorBackground"
+    tools:context=".validacion_doc">
+
+
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="410dp"
+        android:layout_height="127dp"
+        android:background="@drawable/toolbar_bg"
+        android:backgroundTint="@color/colorPrimaryTomato"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/outline_arrow_left_alt_24"
+        app:menu="@menu/toolbar_menu"/>
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="12dp"
+        android:paddingTop="10dp"
+        android:text="Registro de Cliente"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnSecondary"
+        android:textSize="28sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtIn"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="150dp"
+        android:elevation="12dp"
+        android:text="Ingresá el DNI del cliente"
+        android:textColor="@color/colorText"
+        android:textSize="22sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputDNI"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:hint="DNI"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputDNI"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:elevation="12dp"
+            android:textColor="@color/colorText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnVerificar"
+        android:layout_width="157dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Verificar"
+        android:textColor="@color/colorChipBackground"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputDNI"
+        app:icon="@drawable/outline_content_paste_search_24"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

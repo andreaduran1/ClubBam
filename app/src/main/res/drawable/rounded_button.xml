@@ -2,5 +2,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <corners android:radius="12dp" /> <!-- Cambia 10dp por el radio deseado -->
-    <solid android:color="@color/colorPrimary" /> <!-- Color de fondo del button -->
+    <solid android:color="@color/colorPrimaryTomato" /> <!-- Color de fondo del button -->
 </shape>

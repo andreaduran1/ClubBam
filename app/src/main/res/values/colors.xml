@@ -1,11 +1,12 @@
 <resources>
     <!-- Colores principales -->
-    <color name="colorPrimary">#E6492D</color> <!-- Rojo principal (AppBar, botones) -->
+    <color name="colorPrimaryTomato">#E84B3D</color> <!-- Rojo principal (AppBar, botones) -->
     <color name="colorOnPrimary">#FFFFFF</color> <!-- Texto sobre rojo -->
 
     <color name="colorSecondary">#F57C6A</color> <!-- Rojo más claro (variantes de botón) -->
     <color name="colorOnSecondary">#FFFFFF</color>
     <color name="colorText">#1E1F24</color>
+    <color name="colorTomato12">#4A130E</color>
 
     <!-- Fondo -->
     <color name="colorBackground">#FFF8F7</color> <!-- Fondo muy claro -->

@@ -8,20 +8,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class MainActivity : AppCompatActivity() {
+class validacion_doc : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_validacion_doc)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.validacionDoc)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        var btnLogin = findViewById<Button>(R.id.btnLogin)
-        btnLogin.setOnClickListener{
-            val intent = Intent(this, MenuPrincipalActivity::class.java)
+        var btnVerificar = findViewById<Button>(R.id.btnVerificar)
+        btnVerificar.setOnClickListener{
+            val intent = Intent(this, formularioRegistro::class.java)
             startActivity(intent)
         }
     }
