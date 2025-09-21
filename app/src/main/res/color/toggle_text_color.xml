@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Texto cuando está seleccionado -->
+    <item android:color="@color/colorChipBackground" android:state_checked="true"/>
+    <!-- Texto cuando NO está seleccionado -->
+    <item android:color="@color/colorPrimaryTomato"/>
+</selector>

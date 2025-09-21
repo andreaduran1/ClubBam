@@ -12,6 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubBam.Light">
         <activity
+            android:name=".carnet"
+            android:exported="false" />
+        <activity
+            android:name=".pagoCuota"
+            android:exported="false" />
+        <activity
+            android:name=".cuotaCarnet"
+            android:exported="false" />
+        <activity
             android:name=".formularioRegistro"
             android:exported="false" />
         <activity

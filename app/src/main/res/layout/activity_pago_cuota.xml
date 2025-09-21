@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:backgroundTint="@color/colorBackground"
+    tools:context=".pagoCuota">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="410dp"
+        android:layout_height="127dp"
+        android:background="@drawable/toolbar_bg"
+        android:backgroundTint="@color/colorPrimaryTomato"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/outline_arrow_left_alt_24"
+        app:menu="@menu/toolbar_menu" />
+
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/materialTextView"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:elevation="12dp"
+        android:paddingTop="10dp"
+        android:text="Pago de Cuota"
+        android:textAlignment="center"
+        android:textColor="@color/colorOnSecondary"
+        android:textSize="28sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toEndOf="@+id/toolbar"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/toolbar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.562" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtSocio"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:elevation="12dp"
+        android:text="Socio N° 2345"
+        android:textColor="@color/colorText"
+        android:textSize="22sp"
+        app:fontFamily="sans-serif-medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtImporte"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="30dp"
+        android:elevation="12dp"
+        android:text="Ingresá el importe a abonar"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtSocio" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputImporte"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="$"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtSocio">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputImporte"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:elevation="12dp"
+            android:textColor="@color/colorText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputImporteTotal"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:hint="Cálculo automático"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textInputImporte">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/inputImporteTotal"
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:background="@drawable/rounded_edittext_background"
+            android:elevation="12dp"
+            android:textColor="@color/colorText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtMedio"
+        android:layout_width="305dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="10dp"
+        android:elevation="12dp"
+        android:text="Seleccioná forma de pago"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputImporteTotal" />
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleGroupMedioPago"
+        android:layout_width="match_parent"
+        android:layout_height="47dp"
+
+        android:layout_marginTop="30dp"
+        android:elevation="20dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtMedio"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnTarjeta"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Tarjeta"
+            android:textColor="@color/toggle_text_color"
+            app:backgroundTint="@color/toggle_bg_color"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/outline_credit_card_24"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnEfectivo"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="140dp"
+            android:layout_height="45dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Efectivo"
+            android:textColor="@color/toggle_text_color"
+            app:backgroundTint="@color/toggle_bg_color"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/outline_attach_money_24" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="8dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleGroupMedioPago" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtCuotas"
+        android:layout_width="302dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:elevation="12dp"
+        android:text="Seleccioná cantidad de cuotas"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.311"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleGroup1"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        android:elevation="20dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCuotas"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_1cuota"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:text="1 "
+            android:textColor="@color/toggle_text_color"
+            android:textSize="12dp"
+            app:backgroundTint="@color/toggle_bg_color"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_3cuotas"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="3 s/ interés"
+            android:textSize="12dp"
+            app:backgroundTint="@color/toggle_bg_color" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_6cuotas"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:text="6 s/ interés"
+            android:textSize="12dp"
+            app:backgroundTint="@color/toggle_bg_color" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_9cuotas"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:text="9"
+            android:textSize="12dp"
+            app:backgroundTint="@color/toggle_bg_color" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_12cuotas"
+            style="@style/Widget.Custom.ToggleButton"
+            android:layout_width="56dp"
+            android:layout_height="48dp"
+            android:text="12 "
+            android:textSize="12dp"
+            app:backgroundTint="@color/toggle_bg_color" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPagar"
+        android:layout_width="140dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="Pagar"
+        android:textColor="@color/colorChipBackground"
+        app:cornerRadius="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.791"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toggleGroup1"
+        app:icon="@drawable/outline_check_24"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

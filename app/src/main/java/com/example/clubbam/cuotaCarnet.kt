@@ -10,12 +10,12 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.appbar.MaterialToolbar
 
 
-class validacion_doc : AppCompatActivity() {
+class cuotaCarnet : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_validacion_doc)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.validacionDoc)) { v, insets ->
+        setContentView(R.layout.activity_cuota_carnet)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -24,12 +24,16 @@ class validacion_doc : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         toolbar.setNavigationOnClickListener {
-            finish() //
+            finish()
         }
-
-        var btnVerificar = findViewById<Button>(R.id.btnVerificar)
-        btnVerificar.setOnClickListener{
-            val intent = Intent(this, formularioRegistro::class.java)
+        var btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota)
+        btnPagarCuota.setOnClickListener{
+            val intent = Intent(this, pagoCuota::class.java)
+            startActivity(intent)
+        }
+        var btnEmitirCarnet = findViewById<Button>(R.id.btnEmitirCarnet)
+        btnEmitirCarnet.setOnClickListener{
+            val intent = Intent(this, carnet::class.java)
             startActivity(intent)
         }
     }

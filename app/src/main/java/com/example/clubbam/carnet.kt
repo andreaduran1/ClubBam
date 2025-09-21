@@ -7,29 +7,20 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.appbar.MaterialToolbar
 
-
-class validacion_doc : AppCompatActivity() {
+class carnet : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_validacion_doc)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.validacionDoc)) { v, insets ->
+        setContentView(R.layout.activity_carnet)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        toolbar.setNavigationOnClickListener {
-            finish() //
-        }
-
-        var btnVerificar = findViewById<Button>(R.id.btnVerificar)
-        btnVerificar.setOnClickListener{
-            val intent = Intent(this, formularioRegistro::class.java)
+        var btnHome = findViewById<Button>(R.id.btnHome)
+        btnHome.setOnClickListener{
+            val intent = Intent(this, MenuPrincipalActivity::class.java)
             startActivity(intent)
         }
     }

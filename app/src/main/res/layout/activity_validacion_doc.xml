@@ -13,7 +13,7 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        android:layout_width="410dp"
+        android:layout_width="match_parent"
         android:layout_height="127dp"
         android:background="@drawable/toolbar_bg"
         android:backgroundTint="@color/colorPrimaryTomato"
@@ -21,8 +21,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/outline_arrow_left_alt_24"
-        app:menu="@menu/toolbar_menu"/>
+        app:menu="@menu/toolbar_menu"
+        app:navigationIcon="@drawable/outline_arrow_left_alt_24"/>
 
 
     <com.google.android.material.textview.MaterialTextView
