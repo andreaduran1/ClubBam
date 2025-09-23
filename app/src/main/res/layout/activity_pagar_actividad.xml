@@ -11,6 +11,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorBackground"
         android:backgroundTint="@color/colorBackground"
         tools:context=".PagarActividad">
 
@@ -119,7 +120,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txtNombreActividad"
-                    android:layout_width="305dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="NOMBRE ACTIVIDAD"
                     android:textColor="@color/colorText"
@@ -132,8 +133,6 @@
                     android:id="@+id/txtDescripcion"
                     android:layout_width="305dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:gravity="bottom"
                     android:text=" Breve descripción de la actividad"
                     android:textColor="@color/colorText"
                     android:textSize="18sp"

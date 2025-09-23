@@ -4,52 +4,31 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.appbar.MaterialToolbar
 
-class MenuPrincipalActivity : AppCompatActivity() {
+class ListarCuotas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_menu_principal)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.validacionDoc)) { v, insets ->
+        setContentView(R.layout.activity_listar_cuotas)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
+
         // Ocultar título por defecto de la Toolbar
         supportActionBar?.setDisplayShowTitleEnabled(false)
-        //Ingresar nuevo cliente--------------
-        var btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
-        btnRegistrar.setOnClickListener {
-            val intent = Intent(this, ValidacionDoc::class.java)
-            startActivity(intent)
 
-        }
-        //Pagar Cuota------------------------
-        var btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota)
-        btnPagarCuota.setOnClickListener {
-            val intent = Intent(this, ValidacionDoc::class.java)
-            startActivity(intent)
-        }
-        //Pagar Actividad---------------------
-        var btnPagarActividad = findViewById<Button>(R.id.btnPagarActividad)
-        btnPagarActividad.setOnClickListener {
-            val intent = Intent(this, PagarActividad::class.java)
-            startActivity(intent)
-        }
-        //Listar Cuotas----------------------
-        var btnListarCuotas = findViewById<Button>(R.id.btnListarCuotas)
-        btnListarCuotas.setOnClickListener {
-            val intent = Intent(this, ListarCuotas::class.java)
-            startActivity(intent)
+        // Acción del botón de navegación (flecha izquierda)
+        toolbar.setNavigationOnClickListener {
+            finish()
         }
 
 

@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubBam.Light">
         <activity
+            android:name=".ListarCuotas"
+            android:exported="false" />
+        <activity
             android:name=".PagarActividad"
             android:exported="false" />
         <activity
