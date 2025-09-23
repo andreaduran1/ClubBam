@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:backgroundTint="@color/colorBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorBackground"
+        tools:context=".PagarActividad">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="127dp"
+            android:background="@drawable/toolbar_bg"
+            android:backgroundTint="@color/colorPrimaryTomato"
+            android:elevation="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:menu="@menu/toolbar_menu"
+            app:navigationIcon="@drawable/outline_arrow_left_alt_24" />
+
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView"
+            android:layout_width="305dp"
+            android:layout_height="59dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="12dp"
+            android:paddingTop="10dp"
+            android:text="Pagar Actividad"
+            android:textAlignment="center"
+            android:textColor="@color/colorOnSecondary"
+            android:textSize="28sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintBottom_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toEndOf="@+id/toolbar"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="@+id/toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.562" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txtElegi"
+            android:layout_width="305dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:elevation="12dp"
+            android:text="Elegí la actividad a pagar"
+            android:textColor="@color/colorText"
+            android:textSize="22sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/searchInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            app:boxBackgroundColor="@color/colorChipBackground"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="24dp"
+            app:boxCornerRadiusBottomStart="24dp"
+            app:boxCornerRadiusTopEnd="24dp"
+            app:boxCornerRadiusTopStart="24dp"
+            app:boxStrokeColor="@color/colorPrimaryTomato"
+            app:endIconDrawable="@drawable/outline_search_24"
+            app:endIconMode="custom"
+            app:endIconTint="@color/colorPrimaryTomato"
+            app:hintEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtElegi">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Buscar actividades..."
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--BLOQUE QUE SE DEBE CREAR DINAMICAMENTE. DESDE AQUI HASTA ******-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchInputLayout"
+            app:strokeColor="@color/colorPrimaryTomato"
+            app:strokeWidth="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtNombreActividad"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE ACTIVIDAD"
+                    android:textColor="@color/colorText"
+                    android:textSize="22sp"
+                    app:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDescripcion"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="bottom"
+                    android:text=" Breve descripción de la actividad"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    app:fontFamily="sans-serif-ligt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNombreActividad" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/crdHorario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDescripcion"
+                    app:strokeColor="@color/colorPrimaryTomato"
+                    app:strokeWidth="2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txt1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Horario"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtHorario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text=" Jue 15 a 16 hs."
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-ligt"
+                            app:layout_constraintStart_toEndOf="@+id/txt1"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crdHorario">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCosto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Costo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCosto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" $15.000"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt2"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCupo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toEndOf="@id/crdCosto"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cupo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCupo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" 10"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt3"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPagar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pagar"
+                    android:textColor="@color/colorChipBackground"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/outline_attach_money_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.923"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--******ACÁ CIERRA BLOQUE DE ACTIVIDAD INDIVIDUAL
+        //LOS BLOQUE SIGUIENTES DEBER´N BORRARSE CUANDO SE CREEN LAS ACTIVIDADES DINAMICAMENTE
+
+        /CARD2-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card1"
+            app:strokeColor="@color/colorPrimaryTomato"
+            app:strokeWidth="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtNombreActividad2"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE ACTIVIDAD"
+                    android:textColor="@color/colorText"
+                    android:textSize="22sp"
+                    app:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDescripcion2"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="bottom"
+                    android:text=" Breve descripción de la actividad"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    app:fontFamily="sans-serif-ligt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNombreActividad2" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/crdHorario2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDescripcion2"
+                    app:strokeColor="@color/colorPrimaryTomato"
+                    app:strokeWidth="2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txt12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Horario"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtHorario2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text=" Jue 15 a 16 hs."
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-ligt"
+                            app:layout_constraintStart_toEndOf="@+id/txt12"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crdHorario2">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCosto2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Costo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCosto2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" $15.000"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt22"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCupo2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toEndOf="@id/crdCosto2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt32"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cupo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCupo2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" 10"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt32"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPagar2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pagar"
+                    android:textColor="@color/colorChipBackground"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/outline_attach_money_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.923"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--******ACÁ CIERRA BLOQUE DE ACTIVIDAD INDIVIDUAL
+        //LOS BLOQUE SIGUIENTES DEBER´N BORRARSE CUANDO SE CREEN LAS ACTIVIDADES DINAMICAMENTE
+
+        /CARD3-->
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card2"
+            app:strokeColor="@color/colorPrimaryTomato"
+            app:strokeWidth="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtNombreActividad3"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:text="NOMBRE ACTIVIDAD"
+                    android:textColor="@color/colorText"
+                    android:textSize="22sp"
+                    app:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txtDescripcion3"
+                    android:layout_width="305dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:gravity="bottom"
+                    android:text=" Breve descripción de la actividad"
+                    android:textColor="@color/colorText"
+                    android:textSize="18sp"
+                    app:fontFamily="sans-serif-ligt"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNombreActividad3" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/crdHorario3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDescripcion3"
+                    app:strokeColor="@color/colorPrimaryTomato"
+                    app:strokeWidth="2dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="4dp">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txt13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Horario"
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-medium"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/txtHorario3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="bottom"
+                            android:text=" Jue 15 a 16 hs."
+                            android:textColor="@color/colorText"
+                            android:textSize="16sp"
+                            app:fontFamily="sans-serif-ligt"
+                            app:layout_constraintStart_toEndOf="@+id/txt13"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/crdHorario3">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCosto3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Costo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCosto3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" $15.000"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt23"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/crdCupo3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="4dp"
+                        app:cardCornerRadius="12dp"
+                        app:layout_constraintStart_toEndOf="@id/crdCosto3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:strokeColor="@color/colorPrimaryTomato"
+                        app:strokeWidth="2dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="4dp">
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txt33"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cupo: "
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-medium"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:id="@+id/txtCupo3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="bottom"
+                                android:text=" 10"
+                                android:textColor="@color/colorText"
+                                android:textSize="16sp"
+                                app:fontFamily="sans-serif-ligt"
+                                app:layout_constraintStart_toEndOf="@+id/txt33"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnPagar3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Pagar"
+                    android:textColor="@color/colorChipBackground"
+                    app:cornerRadius="15dp"
+                    app:icon="@drawable/outline_attach_money_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.923"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!--******ACÁ CIERRA BLOQUE DE ACTIVIDAD INDIVIDUAL-->
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

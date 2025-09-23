@@ -18,12 +18,33 @@ class MenuPrincipalActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
+            //Ingresar nuevo cliente--------------
             var btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
             btnRegistrar.setOnClickListener{
-                val intent = Intent(this, validacion_doc::class.java)
+                val intent = Intent(this, ValidacionDoc::class.java)
                 startActivity(intent)
 
         }
+            //Pagar Cuota------------------------
+            var btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota)
+            btnPagarCuota.setOnClickListener{
+                val intent = Intent(this, ValidacionDoc::class.java)
+                startActivity(intent)
+        }
+            //Pagar Actividad---------------------
+            var btnPagarActividad = findViewById<Button>(R.id.btnPagarActividad)
+            btnPagarActividad.setOnClickListener{
+                val intent = Intent(this, ValidacionDoc::class.java)
+                startActivity(intent)
+        }
+            //Listar Cuotas----------------------
+            var btnListarCuotas = findViewById<Button>(R.id.btnListarCuotas)
+            btnListarCuotas.setOnClickListener{
+                val intent = Intent(this, ValidacionDoc::class.java)
+                startActivity(intent)
+        }
+
+
+
     }
 }

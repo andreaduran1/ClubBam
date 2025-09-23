@@ -12,22 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubBam.Light">
         <activity
-            android:name=".carnet"
+            android:name=".PagarActividad"
             android:exported="false" />
         <activity
-            android:name=".pagoCuota"
+            android:name=".Perfil"
             android:exported="false" />
         <activity
-            android:name=".cuotaCarnet"
+            android:name=".Carnet"
             android:exported="false" />
         <activity
-            android:name=".formularioRegistro"
+            android:name=".PagoCuota"
+            android:exported="false" />
+        <activity
+            android:name=".CuotaCarnet"
+            android:exported="false" />
+        <activity
+            android:name=".FormularioRegistro"
             android:exported="false" />
         <activity
             android:name=".MenuPrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".validacion_doc"
+            android:name=".ValidacionDoc"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

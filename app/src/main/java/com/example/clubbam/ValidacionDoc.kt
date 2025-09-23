@@ -8,9 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.appbar.MaterialToolbar
+import android.view.Menu
+import android.view.MenuItem
 
 
-class validacion_doc : AppCompatActivity() {
+class ValidacionDoc : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,14 +25,37 @@ class validacion_doc : AppCompatActivity() {
         val toolbar = findViewById<MaterialToolbar>(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        toolbar.setNavigationOnClickListener {
-            finish() //
-        }
+        // Ocultar título por defecto de la Toolbar
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        // Acción del botón de navegación (flecha izquierda)
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
         var btnVerificar = findViewById<Button>(R.id.btnVerificar)
         btnVerificar.setOnClickListener{
-            val intent = Intent(this, formularioRegistro::class.java)
+            val intent = Intent(this, FormularioRegistro::class.java)
             startActivity(intent)
         }
     }
+    //Sobreescritura del menú para el icono de perfil
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_profile -> {
+                // Acción al tocar el ícono de perfil
+                val intent = Intent(this, Perfil::class.java)
+                startActivity(intent)
+                true   // indico que ya procesé el evento
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 }
+
