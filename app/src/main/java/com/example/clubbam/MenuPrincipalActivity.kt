@@ -26,10 +26,12 @@ class MenuPrincipalActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         // Ocultar título por defecto de la Toolbar
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
         //Ingresar nuevo cliente--------------
         var btnRegistrar = findViewById<Button>(R.id.btnRegistrar)
         btnRegistrar.setOnClickListener {
             val intent = Intent(this, ValidacionDoc::class.java)
+            intent.putExtra("nuevoCliente", true)
             startActivity(intent)
 
         }
@@ -37,6 +39,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
         var btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota)
         btnPagarCuota.setOnClickListener {
             val intent = Intent(this, ValidacionDoc::class.java)
+            intent.putExtra("nuevoCliente", false)
             startActivity(intent)
         }
         //Pagar Actividad---------------------
@@ -51,8 +54,6 @@ class MenuPrincipalActivity : AppCompatActivity() {
             val intent = Intent(this, ListarCuotas::class.java)
             startActivity(intent)
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

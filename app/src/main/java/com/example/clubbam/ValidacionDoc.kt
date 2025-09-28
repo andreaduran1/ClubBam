@@ -32,30 +32,45 @@ class ValidacionDoc : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        var btnVerificar = findViewById<Button>(R.id.btnVerificar)
-        btnVerificar.setOnClickListener{
-            val intent = Intent(this, FormularioRegistro::class.java)
-            startActivity(intent)
-        }
-    }
-    //Sobreescritura del menú para el icono de perfil
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-        return true
-    }
+        val intent = intent
+        val nuevoCliente = intent.getBooleanExtra("nuevoCliente", false)
 
+        if (nuevoCliente) {
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_profile -> {
-                // Acción al tocar el ícono de perfil
-                val intent = Intent(this, Perfil::class.java)
+            var btnVerificar = findViewById<Button>(R.id.btnVerificar)
+            btnVerificar.setOnClickListener {
+                val intent = Intent(this, FormularioRegistro::class.java)
+                intent.putExtra("nuevoCliente", true)
                 startActivity(intent)
-                true   // indico que ya procesé el evento
             }
-
-            else -> super.onOptionsItemSelected(item)
+        } else {
+            var btnVerificar = findViewById<Button>(R.id.btnVerificar)
+            btnVerificar.setOnClickListener {
+                val intent = Intent(this, PagoCuota::class.java)
+                intent.putExtra("nuevoCliente", false)
+                startActivity(intent)
+            }
         }
     }
-}
+
+        //Sobreescritura del menú para el icono de perfil
+        override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+            menuInflater.inflate(R.menu.toolbar_menu, menu)
+            return true
+        }
+
+
+        override fun onOptionsItemSelected(item: MenuItem): Boolean {
+            return when (item.itemId) {
+                R.id.action_profile -> {
+                    // Acción al tocar el ícono de perfil
+                    val intent = Intent(this, Perfil::class.java)
+                    startActivity(intent)
+                    true   // indico que ya procesé el evento
+                }
+
+                else -> super.onOptionsItemSelected(item)
+            }
+        }
+    }
 

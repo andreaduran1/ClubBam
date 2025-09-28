@@ -31,13 +31,26 @@ class PagoCuota : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
+        val intent = intent
+        val nuevoCliente = intent.getBooleanExtra("nuevoCliente", false)
+
+        if (nuevoCliente) {
         var btnPagar = findViewById<Button>(R.id.btnPagar)
         btnPagar.setOnClickListener{
             val intent = Intent(this, CuotaCarnet::class.java)
             startActivity(intent)
         }
 
+    }else
+        {
+            var btnPagar = findViewById<Button>(R.id.btnPagar)
+            btnPagar.setOnClickListener{
+                val intent = Intent(this, MenuPrincipalActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.toolbar_menu, menu)
         return true

@@ -36,6 +36,7 @@ class CuotaCarnet : AppCompatActivity() {
         var btnPagarCuota = findViewById<Button>(R.id.btnPagarCuota)
         btnPagarCuota.setOnClickListener{
             val intent = Intent(this, PagoCuota::class.java)
+            intent.putExtra("nuevoCliente", true)
             startActivity(intent)
         }
         var btnEmitirCarnet = findViewById<Button>(R.id.btnEmitirCarnet)
