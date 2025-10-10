@@ -11,11 +11,12 @@
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        android:layout_width="410dp"
-        android:layout_height="127dp"
+        android:layout_width="412dp"
+        android:layout_height="80dp"
         android:background="@drawable/toolbar_bg"
         android:backgroundTint="@color/colorPrimaryTomato"
         android:elevation="10dp"
+        android:paddingTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,41 +24,40 @@
         app:menu="@menu/toolbar_menu"/>
 
 
-    <com.google.android.material.textview.MaterialTextView
+     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView"
-        android:layout_width="305dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="280dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="10dp"
         android:elevation="12dp"
-        android:paddingTop="10dp"
-        android:text="Formulario de Registro"
+        android:paddingTop="20dp"
+        android:text="Registro de Cliente"
         android:textAlignment="center"
         android:textColor="@color/colorOnSecondary"
         android:textSize="28sp"
-        app:fontFamily="sans-serif-medium"
+        app:fontFamily="sans-serif-regular"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.562" />
+        app:layout_constraintVertical_bias="0.0" />
+
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtIn"
         android:layout_width="305dp"
         android:layout_height="59dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="96dp"
         android:elevation="12dp"
         android:text="Ingresá los datos personales"
         android:textColor="@color/colorText"
         android:textSize="22sp"
         app:fontFamily="sans-serif-medium"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintHorizontal_bias="0.311"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputNombre"

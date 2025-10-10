@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -31,6 +32,23 @@ class PagarActividad : AppCompatActivity() {
             finish()
         }
         //Botones de actividad
+        var btnPagar = findViewById<Button>(R.id.btnPagar)
+        btnPagar.setOnClickListener {
+            val intent = Intent(this, ComprobantePago::class.java)
+            startActivity(intent)
+        }
+
+        var btnPagar2 = findViewById<Button>(R.id.btnPagar2)
+        btnPagar2.setOnClickListener {
+            val intent = Intent(this, ComprobantePago::class.java)
+            startActivity(intent)
+        }
+
+        var btnPagar3 = findViewById<Button>(R.id.btnPagar3)
+        btnPagar3.setOnClickListener {
+            val intent = Intent(this, ComprobantePago::class.java)
+            startActivity(intent)
+        }
     }
 
       //Sobreescritura del menú para el icono de perfil

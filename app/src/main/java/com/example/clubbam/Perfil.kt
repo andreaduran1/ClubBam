@@ -32,9 +32,9 @@ class Perfil : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        var btnHome = findViewById<Button>(R.id.btnHome)
-        btnHome.setOnClickListener{
-            val intent = Intent(this, MenuPrincipalActivity::class.java)
+        var btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
+        btnCerrarSesion.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

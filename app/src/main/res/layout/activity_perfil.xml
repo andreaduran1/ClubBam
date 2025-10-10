@@ -17,6 +17,7 @@
         android:background="@drawable/toolbar_bg"
         android:backgroundTint="@color/colorPrimaryTomato"
         android:elevation="10dp"
+        android:paddingTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +35,7 @@
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.App.CircularImageView"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:srcCompat="@drawable/avatar" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtNombreApellido"
@@ -154,7 +155,6 @@
         android:layout_width="400dp"
         android:layout_height="2dp"
         android:layout_marginStart="16dp"
-
         android:layout_marginEnd="16dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
@@ -163,15 +163,14 @@
         app:layout_constraintTop_toBottomOf="@+id/txtRol" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnHome"
+        android:id="@+id/btnCerrarSesion"
         android:layout_width="158dp"
         android:layout_height="53dp"
         android:layout_marginBottom="30dp"
         android:fontFamily="sans-serif-medium"
-        android:text="Home"
+        android:text="Cerrar sesión"
         android:textColor="@color/colorChipBackground"
         app:cornerRadius="15dp"
-        app:icon="@drawable/outline_home_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -11,7 +11,8 @@
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="127dp"
+        android:layout_height="80dp"
+        android:paddingTop="14dp"
         android:background="@drawable/toolbar_bg"
         android:backgroundTint="@color/colorPrimaryTomato"
         android:elevation="10dp"
@@ -24,35 +25,34 @@
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/materialTextView"
         android:layout_width="305dp"
-        android:layout_height="59dp"
+        android:layout_height="80dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:elevation="12dp"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:text="Menu Principal"
         android:textAlignment="center"
         android:textColor="@color/colorOnSecondary"
         android:textSize="28sp"
-        app:fontFamily="sans-serif-medium"
+        app:fontFamily="sans-serif-regular"
         app:layout_constraintBottom_toBottomOf="@+id/toolbar"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         android:layout_marginEnd="139dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Hola Juan,"
         android:textColor="@color/colorText"
         android:textSize="45dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
