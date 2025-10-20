@@ -1,6 +1,5 @@
 package com.example.clubbam
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -9,30 +8,27 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import org.w3c.dom.Text
 
-class MainActivity : AppCompatActivity() {
-    @SuppressLint("WrongViewCast")
+class RecuperarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_recuperar)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.validacionDoc)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        var btnLogin = findViewById<Button>(R.id.btnLogin)
-        btnLogin.setOnClickListener{
-            val intent = Intent(this, MenuPrincipalActivity::class.java)
+        var btnRecupero = findViewById<Button>(R.id.btnRecupero)
+        btnRecupero.setOnClickListener{
+            val intent = Intent(this, ConfirmaRecuperoActivity::class.java)
             startActivity(intent)
         }
 
-        var btnTxtRecupero = findViewById<TextView>(R.id.txtRecupero)
-        btnTxtRecupero.setOnClickListener{
-            val intent = Intent(this, RecuperarActivity::class.java)
+        var btnTxtInicio = findViewById<TextView>(R.id.txtInicio)
+        btnTxtInicio.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)        }
-
     }
 }

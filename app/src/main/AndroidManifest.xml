@@ -39,6 +39,15 @@
             android:name=".ValidacionDoc"
             android:exported="false" />
         <activity
+            android:name=".RecuperarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmaRecuperoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ComprobantePago"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
