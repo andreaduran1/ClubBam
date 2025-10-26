@@ -12,43 +12,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubBam.Light">
         <activity
-            android:name=".ListarCuotas"
+            android:name=".ui.cuotas.ListarCuotasActivity"
             android:exported="false" />
         <activity
-            android:name=".PagarActividad"
+            android:name=".ui.cuotas.PagarActividadActivity"
             android:exported="false" />
         <activity
-            android:name=".Perfil"
+            android:name=".ui.perfil.PerfilActivity"
             android:exported="false" />
         <activity
-            android:name=".Carnet"
+            android:name=".ui.perfil.CarnetActivity"
             android:exported="false" />
         <activity
-            android:name=".PagoCuota"
+            android:name=".ui.cuotas.PagoCuotaActivity"
             android:exported="false" />
         <activity
-            android:name=".CuotaCarnet"
+            android:name=".ui.cuotas.CuotaCarnetActivity"
             android:exported="false" />
         <activity
-            android:name=".FormularioRegistro"
+            android:name=".ui.auth.FormularioRegistroActivity"
             android:exported="false" />
         <activity
-            android:name=".MenuPrincipalActivity"
+            android:name=".ui.menu.MenuPrincipalActivity"
             android:exported="false" />
         <activity
-            android:name=".ValidacionDoc"
+            android:name=".ui.menu.ValidacionDocActivity"
             android:exported="false" />
         <activity
-            android:name=".RecuperarActivity"
+            android:name=".ui.auth.RecuperarActivity"
             android:exported="false" />
         <activity
-            android:name=".ConfirmaRecuperoActivity"
+            android:name=".ui.auth.ConfirmaRecuperoActivity"
             android:exported="false" />
         <activity
-            android:name=".ComprobantePago"
+            android:name=".ui.cuotas.ComprobantePagoActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

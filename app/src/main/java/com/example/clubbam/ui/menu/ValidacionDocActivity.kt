@@ -1,18 +1,21 @@
-package com.example.clubbam
+package com.example.clubbam.ui.menu
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.clubbam.R
+import com.example.clubbam.ui.auth.FormularioRegistroActivity
+import com.example.clubbam.ui.cuotas.PagoCuotaActivity
+import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.appbar.MaterialToolbar
-import android.view.Menu
-import android.view.MenuItem
 
-
-class ValidacionDoc : AppCompatActivity() {
+class ValidacionDocActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -39,14 +42,14 @@ class ValidacionDoc : AppCompatActivity() {
 
             var btnVerificar = findViewById<Button>(R.id.btnVerificar)
             btnVerificar.setOnClickListener {
-                val intent = Intent(this, FormularioRegistro::class.java)
+                val intent = Intent(this, FormularioRegistroActivity::class.java)
                 intent.putExtra("nuevoCliente", true)
                 startActivity(intent)
             }
         } else {
             var btnVerificar = findViewById<Button>(R.id.btnVerificar)
             btnVerificar.setOnClickListener {
-                val intent = Intent(this, PagoCuota::class.java)
+                val intent = Intent(this, PagoCuotaActivity::class.java)
                 intent.putExtra("nuevoCliente", false)
                 startActivity(intent)
             }
@@ -64,7 +67,7 @@ class ValidacionDoc : AppCompatActivity() {
             return when (item.itemId) {
                 R.id.action_profile -> {
                     // Acción al tocar el ícono de perfil
-                    val intent = Intent(this, Perfil::class.java)
+                    val intent = Intent(this, PerfilActivity::class.java)
                     startActivity(intent)
                     true   // indico que ya procesé el evento
                 }
@@ -73,4 +76,3 @@ class ValidacionDoc : AppCompatActivity() {
             }
         }
     }
-

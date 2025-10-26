@@ -1,4 +1,4 @@
-package com.example.clubbam
+package com.example.clubbam.ui.cuotas
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,15 +9,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.clubbam.ui.menu.MenuPrincipalActivity
+import com.example.clubbam.ui.perfil.PerfilActivity
+import com.example.clubbam.R
 import com.google.android.material.appbar.MaterialToolbar
 
-
-class Carnet : AppCompatActivity() {
+class PagoCuotaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_carnet)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+        setContentView(R.layout.activity_pago_cuota)
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.pagoCuota)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
@@ -32,10 +34,23 @@ class Carnet : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        var btnHome = findViewById<Button>(R.id.btnHome)
-        btnHome.setOnClickListener{
-            val intent = Intent(this, MenuPrincipalActivity::class.java)
+        val intent = intent
+        val nuevoCliente = intent.getBooleanExtra("nuevoCliente", false)
+
+        if (nuevoCliente) {
+        var btnPagar = findViewById<Button>(R.id.btnPagar)
+        btnPagar.setOnClickListener{
+            val intent = Intent(this, CuotaCarnetActivity::class.java)
             startActivity(intent)
+        }
+
+    }else
+        {
+            var btnPagar = findViewById<Button>(R.id.btnPagar)
+            btnPagar.setOnClickListener{
+                val intent = Intent(this, MenuPrincipalActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 
@@ -48,7 +63,7 @@ class Carnet : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_profile -> {
                 // Acción al tocar el ícono de perfil
-                val intent = Intent(this, Perfil::class.java)
+                val intent = Intent(this, PerfilActivity::class.java)
                 startActivity(intent)
                 true   // indico que ya procesé el evento
             }

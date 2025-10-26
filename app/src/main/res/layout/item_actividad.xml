@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardActividad"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="@color/colorPrimaryTomato"
+    app:strokeWidth="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <!-- NOMBRE ACTIVIDAD -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvNombreActividad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMBRE ACTIVIDAD"
+            android:textColor="@color/colorText"
+            android:textSize="22sp"
+            app:fontFamily="sans-serif-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- DESCRIPCIÓN -->
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDescripcion"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Breve descripción de la actividad"
+            android:textColor="@color/colorText"
+            android:textSize="18sp"
+            app:fontFamily="sans-serif-light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvNombreActividad" />
+
+        <!-- CARD HORARIO -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/crdHorario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescripcion"
+            app:strokeColor="@color/colorPrimaryTomato"
+            app:strokeWidth="2dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/txt1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horario:"
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-medium"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tvHorario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jue 15 a 16 hs."
+                    android:textColor="@color/colorText"
+                    android:textSize="16sp"
+                    app:fontFamily="sans-serif-light"
+                    app:layout_constraintStart_toEndOf="@id/txt1"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- COSTO Y CUPO -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/crdHorario">
+
+            <!-- CARD COSTO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdCosto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/colorPrimaryTomato"
+                app:strokeWidth="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Costo:"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvCosto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$15.000"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-light"
+                        app:layout_constraintStart_toEndOf="@id/txt2"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CARD CUPO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdCupo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                app:cardCornerRadius="12dp"
+                app:strokeColor="@color/colorPrimaryTomato"
+                app:strokeWidth="2dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cupo:"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvCupo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-light"
+                        app:layout_constraintStart_toEndOf="@id/txt3"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <!-- BOTÓN PAGAR -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPagar"
+            android:layout_width="wrap_content"
+            android:layout_height="80dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Pagar"
+            android:textColor="@color/colorChipBackground"
+            app:cornerRadius="15dp"
+            app:icon="@drawable/outline_attach_money_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
