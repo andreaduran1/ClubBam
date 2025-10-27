@@ -62,7 +62,7 @@ class PagarActividadActivity : AppCompatActivity() {
 
 
 
-
+        // Acá renderizo la lista de actividades
         val rvActividades = findViewById<RecyclerView>(R.id.rvActividades)
         rvActividades.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         val adapter = ActividadAdapter(actividadesLista)

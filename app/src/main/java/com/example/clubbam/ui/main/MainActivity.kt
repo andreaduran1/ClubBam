@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this, MenuPrincipalActivity::class.java)
                 intent.putExtra("usuario", usuario)
                 startActivity(intent)
+                finish() // para evitar volver al login con back
             }
             else{
                 Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()

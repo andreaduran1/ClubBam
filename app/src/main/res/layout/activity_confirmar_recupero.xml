@@ -56,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="224dp"
         android:elevation="6dp"
-        android:text="Te enviamos un mail con los pasos a seguir para recuperar tu contraseña."
-        android:textSize="12sp"
+        android:text="Si los datos son correctos, te enviaremos los pasos a seguir para recuperar tu contraseña."
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />
@@ -66,10 +66,10 @@
         android:id="@+id/textView3"
         android:layout_width="260dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_marginTop="280dp"
         android:elevation="6dp"
         android:text="Revisá tu bandeja de entrada y spam."
-        android:textSize="12sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toTopOf="@+id/view" />

@@ -43,6 +43,7 @@ class PerfilActivity : AppCompatActivity() {
                 .setPositiveButton("Sí") { _, _ ->
                 val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                // usaría finish() dentro del setPositiveButton en el caso que quiera que vuela atrás
         }
             .setNegativeButton("No", null)
             .show()

@@ -25,8 +25,6 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         db.execSQL("DROP TABLE IF EXISTS actividades")
         onCreate(db)
 
-
-
     }
 
     fun getActividades(): List<Actividad> {
