@@ -18,17 +18,22 @@ import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.appbar.MaterialToolbar
 
 class MenuPrincipalActivity : AppCompatActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
         setContentView(R.layout.activity_menu_principal)
+        val session = com.example.clubbam.data.SessionManager(this)
+        val nombre = session.getNombre()
+
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.menuPrincipal)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             val tvSaludo = findViewById<TextView>(R.id.tvSaludo)
-            val usuario = intent.getStringExtra("usuario")?: "Usuario"
-            tvSaludo.text = "Hola $usuario,"
+            tvSaludo.text = "Hola $nombre,"
             insets
             }
 
@@ -64,6 +69,7 @@ class MenuPrincipalActivity : AppCompatActivity() {
             val intent = Intent(this, ListarCuotasActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -74,12 +80,10 @@ class MenuPrincipalActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_profile -> {
-                // Acción al tocar el ícono de perfil
-                val intent = Intent(this, PerfilActivity::class.java)
+                val intent = Intent(this, com.example.clubbam.ui.perfil.PerfilActivity::class.java)
                 startActivity(intent)
-                true   // indico que ya procesé el evento
+                true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

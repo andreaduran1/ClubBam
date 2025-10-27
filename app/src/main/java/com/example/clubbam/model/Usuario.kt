@@ -1,11 +1,10 @@
 package com.example.clubbam.model
 
 class Usuario (
-    var id: Long,
-    var nombre: String,
-    var apellido: String,
-    var email: String,
-    var password: String,
-    var domicilio: String,
-    var localidad: String,
+    val id: Long,
+    val nombre: String,
+    val apellido: String,
+    val usuario: String,
+    val email: String,
+    val password: String,
     )

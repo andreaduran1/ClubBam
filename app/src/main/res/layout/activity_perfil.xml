@@ -37,7 +37,7 @@
         app:srcCompat="@drawable/avatar" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtNombreApellido"
+        android:id="@+id/tvNombreApellido"
         android:layout_width="305dp"
         android:layout_height="59dp"
         android:layout_marginTop="10dp"
@@ -57,7 +57,7 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtUserName"
+        android:id="@+id/tvUserName"
         android:layout_width="305dp"
         android:layout_height="59dp"
         android:layout_marginTop="10dp"
@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.892" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtNombre"
+        android:id="@+id/tvNombre"
         android:layout_width="308dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -92,7 +92,7 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtApellido"
+        android:id="@+id/tvApellido"
         android:layout_width="308dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -105,10 +105,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txtRol"
+        android:id="@+id/tvEmail"
         android:layout_width="308dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -121,7 +121,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/tvApellido" />
 
     <View
         android:id="@+id/divider1"
@@ -134,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtApellido" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
     <View
         android:id="@+id/divider2"
@@ -147,7 +147,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvApellido" />
 
     <View
         android:id="@+id/divider3"
@@ -159,7 +159,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRol" />
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCerrarSesion"

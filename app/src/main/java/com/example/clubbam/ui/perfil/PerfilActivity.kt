@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,25 @@ class PerfilActivity : AppCompatActivity() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.perfil)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+
+            val session = com.example.clubbam.data.SessionManager(this)
+
+            val tvUserName = findViewById<TextView>(R.id.tvUserName)
+            val tvNombreApellido = findViewById<TextView>(R.id.tvNombreApellido)
+            val tvNombre = findViewById<TextView>(R.id.tvNombre)
+            val tvApellido = findViewById<TextView>(R.id.tvApellido)
+            val tvEmail = findViewById<TextView>(R.id.tvEmail)
+
+            val usuario = session.getUsuario()
+            val nombre = session.getNombre()
+            val apellido = session.getApellido()
+            val email = session.getEmail()
+
+            tvNombreApellido.text = "$nombre $apellido"
+            tvUserName.text = "$usuario"
+            tvNombre.text  = "$nombre"
+            tvApellido.text  = "$apellido"
+            tvEmail.text = "$email"
             insets
         }
 
@@ -41,9 +61,10 @@ class PerfilActivity : AppCompatActivity() {
                 .setTitle("Cerrar Sesión")
                 .setMessage("¿Estás seguro de que deseas cerrar sesión?")
                 .setPositiveButton("Sí") { _, _ ->
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                // usaría finish() dentro del setPositiveButton en el caso que quiera que vuela atrás
+                    val session = com.example.clubbam.data.SessionManager(this)
+                    session.clear()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
         }
             .setNegativeButton("No", null)
             .show()
