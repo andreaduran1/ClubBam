@@ -11,8 +11,7 @@ import com.example.clubbam.R
 import com.example.clubbam.model.Actividad
 import com.google.android.material.button.MaterialButton
 import com.example.clubbam.ui.cuotas.ComprobantePagoActivity
-
-
+import org.w3c.dom.Text
 
 
 class ActividadAdapter (private val actividadList: List<Actividad>): RecyclerView.Adapter<ActividadAdapter.ViewHolder>()
@@ -22,6 +21,7 @@ class ActividadAdapter (private val actividadList: List<Actividad>): RecyclerVie
         val cardView: MaterialCardView = itemView.findViewById(R.id.cardActividad)
         val tvNombreActividad: TextView = itemView.findViewById(R.id.tvNombreActividad)
         val tvDescripcion: TextView = itemView.findViewById(R.id.tvDescripcion)
+        val tvDia: TextView = itemView.findViewById(R.id.tvDia)
         val tvHorario: TextView = itemView.findViewById(R.id.tvHorario)
         val tvCosto: TextView = itemView.findViewById(R.id.tvCosto)
         val tvCupo: TextView = itemView.findViewById(R.id.tvCupo)
@@ -39,6 +39,7 @@ class ActividadAdapter (private val actividadList: List<Actividad>): RecyclerVie
         holder.tvNombreActividad.text = actividad.nombre
         holder.tvDescripcion.text = actividad.descripcion
         holder.tvHorario.text = actividad.horario
+        holder.tvDia.text = actividad.dia
         holder.tvCosto.text = actividad.costo.toString()
         holder.tvCupo.text = actividad.cupos.toString()
         holder.btnPagar.setOnClickListener {

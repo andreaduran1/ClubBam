@@ -40,12 +40,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvNombreActividad" />
 
-        <!-- CARD HORARIO -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/crdHorario"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvDescripcion">
+        <!-- CARD DIA -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/crdDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:cardCornerRadius="12dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvDescripcion"
@@ -58,10 +64,10 @@
                 android:padding="4dp">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/txt1"
+                    android:id="@+id/txtDia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Horario:"
+                    android:text="Dia:"
                     android:textColor="@color/colorText"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-medium"
@@ -69,26 +75,82 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvHorario"
+                    android:id="@+id/tvDia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jue 15 a 16 hs."
+                    android:layout_marginStart="4dp"
+                    android:text="Miercoles"
                     android:textColor="@color/colorText"
                     android:textSize="16sp"
                     app:fontFamily="sans-serif-light"
-                    app:layout_constraintStart_toEndOf="@id/txt1"
+                    app:layout_constraintStart_toEndOf="@id/txtDia"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+            <!-- CARD HORARIO -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/crdHorario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="12dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDescripcion"
+                app:strokeColor="@color/colorPrimaryTomato"
+                app:strokeWidth="2dp">
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txt1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Horario:"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvHorario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="08:00"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-light"
+                        app:layout_constraintStart_toEndOf="@id/txt1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/txtHoras"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="48dp"
+                        android:text="hs"
+                        android:textColor="@color/colorText"
+                        android:textSize="16sp"
+                        app:fontFamily="sans-serif-light"
+                        app:layout_constraintStart_toEndOf="@id/txt1"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
         <!-- COSTO Y CUPO -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="50dp"
             android:orientation="horizontal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/crdHorario">
+            app:layout_constraintTop_toBottomOf="@id/tvDescripcion">
 
             <!-- CARD COSTO -->
             <com.google.android.material.card.MaterialCardView
