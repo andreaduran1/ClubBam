@@ -39,8 +39,8 @@ class ActividadAdapter (private val actividadList: List<Actividad>): RecyclerVie
         holder.tvNombreActividad.text = actividad.nombre
         holder.tvDescripcion.text = actividad.descripcion
         holder.tvHorario.text = actividad.horario
-        holder.tvCosto.text = actividad.cuota.toString()
-        holder.tvCupo.text = actividad.cupo.toString()
+        holder.tvCosto.text = actividad.costo.toString()
+        holder.tvCupo.text = actividad.cupos.toString()
         holder.btnPagar.setOnClickListener {
             val context = holder.itemView.context // Obtiene el contexto del ViewHolder
             val intent = Intent(context, ComprobantePagoActivity::class.java)

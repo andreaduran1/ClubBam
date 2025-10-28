@@ -40,7 +40,7 @@ class PagarActividadActivity : AppCompatActivity() {
             finish()
         }
         val dbHelper = DBHelper(this)
-
+/*
         // Insertar varias actividades de ejemplo
         val actividadesEjemplo = listOf(
             Actividad(0, "Yoga", "Clases de yoga relajante", "Lunes 18:00", 15, 5000.0),
@@ -55,7 +55,7 @@ class PagarActividadActivity : AppCompatActivity() {
             } else {
                 android.util.Log.e("DB", "Error insertando ${actividad.nombre}")
             }
-        }
+        }*/
         val actividadesLista = dbHelper.getActividades()
         Log.d("DB", "Actividades en BD: ${actividadesLista.size}")
 
