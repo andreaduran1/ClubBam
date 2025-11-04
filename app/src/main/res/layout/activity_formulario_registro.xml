@@ -46,9 +46,9 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtIn"
-        android:layout_width="305dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
         android:elevation="12dp"
         android:text="Ingresá los datos personales"
         android:textColor="@color/colorText"
@@ -59,23 +59,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:elevation="12dp"
+        android:text="DNI:"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIn" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvDNI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:elevation="12dp"
+        android:text="12345678"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toEndOf="@+id/tv1"
+        app:layout_constraintTop_toBottomOf="@+id/txtIn" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputNombre"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:hint="Nombre"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/tvDNI">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/inputNombre"
             android:layout_width="match_parent"
-            android:layout_height="59dp"
+            android:layout_height="match_parent"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:focusable="true"
             android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,8 +112,11 @@
         android:id="@+id/textInputApellido"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Apellido"
+        app:boxStrokeColor="#00FAF6F6"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:focusable="true"
             android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,8 +135,10 @@
         android:id="@+id/textInputDomicilio"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Domicilio"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:focusable="true"
             android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -123,8 +157,10 @@
         android:id="@+id/textInputMail"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Email"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
@@ -135,7 +171,7 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:focusable="true"
             android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,8 +179,10 @@
         android:id="@+id/textInputTelefono"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Telefono"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
@@ -155,7 +193,7 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:focusable="true"
             android:inputType="phone"
             android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -164,14 +202,16 @@
         android:id="@+id/textInputFechaNac"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:hint="Fecha Nac."
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.40"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputTelefono">
 
-       <!-- <DatePicker
+        <!-- <DatePicker
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:id="@+id/datePicker"
@@ -183,11 +223,40 @@
             android:layout_width="match_parent"
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
-            android:elevation="12dp"
+            android:clickable="true"
+            android:focusable="false"
             android:inputType="datetime|date"
             android:textColor="@color/colorText" />
 
 
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/menuGenero"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorOnError"
+        android:hint="Genero"
+        app:boxBackgroundMode="outline"
+        app:boxCornerRadiusBottomEnd="12dp"
+        app:boxCornerRadiusBottomStart="12dp"
+        app:boxCornerRadiusTopEnd="12dp"
+        app:boxCornerRadiusTopStart="12dp"
+        app:boxStrokeColor="@color/toggle_text_color"
+        app:boxStrokeWidth="1dp"
+        app:endIconMode="dropdown_menu"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.40"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputFechaNac">
+
+        <AutoCompleteTextView
+            android:id="@+id/autoCompleteGenero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorText" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.switchmaterial.SwitchMaterial
@@ -203,7 +272,7 @@
         android:textAlignment="viewStart"
         android:textColor="@color/colorTextSecondary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputFechaNac" />
+        app:layout_constraintTop_toBottomOf="@+id/menuGenero" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnSocio"
@@ -217,7 +286,7 @@
         app:cornerRadius="15dp"
         app:icon="@drawable/baseline_groups_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputFechaNac" />
+        app:layout_constraintTop_toBottomOf="@+id/menuGenero" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnNoSocio"
@@ -233,7 +302,7 @@
         app:icon="@drawable/baseline_person_24"
         app:layout_constraintEnd_toStartOf="@+id/btnSocio"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputFechaNac" />
+        app:layout_constraintTop_toBottomOf="@+id/menuGenero" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

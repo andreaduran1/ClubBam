@@ -7,7 +7,7 @@ import com.example.clubbam.model.Usuario
 
 
 const val DATABASE_NAME = "ClubBam.db"
-const val DATABASE_VERSION = 7
+const val DATABASE_VERSION = 8
 
 class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -32,6 +32,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "dni INTEGER," +
                 "fechaNac TEXT," +            // YYYY-MM-DD
                 "genero TEXT," +
+                "mail TEXT," +
                 "numCel TEXT," +
                 "domicilio TEXT," +
                 "aptoFisico INTEGER DEFAULT 1," + // 1=true
@@ -72,6 +73,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "dni INTEGER," +
                 "fechaNac TEXT," +            // YYYY-MM-DD
                 "genero TEXT," +
+                "mail TEXT," +
                 "numCel TEXT," +
                 "domicilio TEXT," +
                 "aptoFisico INTEGER DEFAULT 1" +
@@ -240,7 +242,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
     // TABLA SOCIOS Y NO SOCIOS
     // devuelve NroCarnet generado
     fun registrarSocio(nombre: String, apellido: String, dni: Int, fechaNac: String,
-                       genero: String, numCel: String, domicilio: String, aptoFisico: Boolean,
+                       genero: String, mail : String, numCel: String, domicilio: String, aptoFisico: Boolean,
                        fechaIngreso: String, vencCuota: String): Int {
         val db = this.writableDatabase
         val values = android.content.ContentValues().apply {
@@ -249,6 +251,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
             put("dni", dni)
             put("fechaNac", fechaNac)              // "YYYY-MM-DD"
             put("genero", genero)
+            put("mail", mail)
             put("numCel", numCel)
             put("domicilio", domicilio)
             put("aptoFisico", if (aptoFisico) 1 else 0)
@@ -264,7 +267,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
 
     // devuelve NroNoSocio generado
     fun registrarNoSocio(nombre: String, apellido: String, dni: Int, fechaNac: String,
-                         genero: String, numCel: String, domicilio: String, aptoFisico: Boolean): Int {
+                         genero: String, mail : String, numCel: String, domicilio: String, aptoFisico: Boolean): Int {
         val db = this.writableDatabase
         val values = android.content.ContentValues().apply {
             put("nombre", nombre)
@@ -272,6 +275,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
             put("dni", dni)
             put("fechaNac", fechaNac)
             put("genero", genero)
+            put("mail", mail)
             put("numCel", numCel)
             put("domicilio", domicilio)
             put("aptoFisico", if (aptoFisico) 1 else 0)
