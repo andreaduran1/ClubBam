@@ -195,8 +195,9 @@ class FormularioRegistroActivity : AppCompatActivity() {
                                 "Se ha creado el cliente en la categoría Socio con el Nro. $nroSocio",
                                 Toast.LENGTH_SHORT
                             ).show()
-                            val intent = Intent(this, CuotaCarnetActivity::class.java)
+                            val intent = Intent(this@FormularioRegistroActivity, CuotaCarnetActivity::class.java)
                             intent.putExtra("nroSocio", nroSocio)
+                            intent.putExtra("nuevoCliente", true)
                             startActivity(intent)
                         }
                     }

@@ -68,7 +68,8 @@ class ValidacionDocActivity : AppCompatActivity() {
                         .setMessage("El DNI ingresado corresponde a un cliente de tipo Socio nro.: $nro. ¿Desea navegar al pago de cuotas?")
                         .setPositiveButton("Sí") { _, _ ->
                             val intent = Intent(this, PagoCuotaActivity::class.java)
-                            intent.putExtra("dni", dni)
+                            intent.putExtra("nuevoCliente", false)
+                            intent.putExtra("nroSocio", nro)
                             startActivity(intent)
                         }
 

@@ -4,8 +4,8 @@ class Actividad (
     val NroActividad: Int,
     val nombre: String,
     val descripcion: String,
-    val costo: Double,
-    val dia: String,
-    val horario: String,
-    val cupos: Int,
+    var costo: Double,
+    var dia: String,
+    var horario: String,
+    var cupos: Int,
 )

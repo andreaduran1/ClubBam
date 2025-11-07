@@ -4,17 +4,20 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.example.clubbam.model.Actividad
 import com.example.clubbam.model.Usuario
+import com.example.clubbam.model.Socio
+import com.example.clubbam.model.Cuota
+import java.time.LocalDate
+
+
 
 
 const val DATABASE_NAME = "ClubBam.db"
-const val DATABASE_VERSION = 8
+const val DATABASE_VERSION = 13
 
 class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     override fun onCreate(db: SQLiteDatabase) {
-        // Habilitar claves foráneas
         db.execSQL("PRAGMA foreign_keys = ON")
-
 
         db.execSQL("CREATE TABLE IF NOT EXISTS usuarios (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -24,25 +27,23 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "email TEXT UNIQUE," +
                 "password TEXT)")
 
-        // socio
         db.execSQL("CREATE TABLE IF NOT EXISTS socios (" +
                 "nroCarnet INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT," +
                 "apellido TEXT," +
                 "dni INTEGER," +
-                "fechaNac TEXT," +            // YYYY-MM-DD
+                "fechaNac TEXT," +
                 "genero TEXT," +
                 "mail TEXT," +
                 "numCel TEXT," +
                 "domicilio TEXT," +
-                "aptoFisico INTEGER DEFAULT 1," + // 1=true
-                "fechaIngreso TEXT," +        // YYYY-MM-DD
-                "vencCuota TEXT," +           // YYYY-MM-DD
+                "aptoFisico INTEGER DEFAULT 1," +
+                "fechaIngreso TEXT," +
+                "vencCuota TEXT," +
                 "esActivo INTEGER DEFAULT 1," +
                 "carnetEntregado INTEGER DEFAULT 1" +
                 ")")
 
-        // cuota
         db.execSQL("CREATE TABLE IF NOT EXISTS cuotas (" +
                 "nroCuota INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nroSocio INTEGER," +
@@ -51,10 +52,9 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "importe REAL," +
                 "metodoPago TEXT," +
                 "cantCuotas INTEGER," +
-                "FOREIGN KEY (nroSocio) REFERENCES socio(nroCarnet) ON DELETE CASCADE ON UPDATE CASCADE" +
+                "FOREIGN KEY (nroSocio) REFERENCES socios(nroCarnet) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")")
 
-        // actividad
         db.execSQL("CREATE TABLE IF NOT EXISTS actividades (" +
                 "nroActividad INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT," +
@@ -65,13 +65,12 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "cupos INTEGER" +
                 ")")
 
-        // noSocio
         db.execSQL("CREATE TABLE IF NOT EXISTS noSocios (" +
                 "nroNoSocio INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT," +
                 "apellido TEXT," +
                 "dni INTEGER," +
-                "fechaNac TEXT," +            // YYYY-MM-DD
+                "fechaNac TEXT," +
                 "genero TEXT," +
                 "mail TEXT," +
                 "numCel TEXT," +
@@ -79,33 +78,32 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "aptoFisico INTEGER DEFAULT 1" +
                 ")")
 
-        // pagoActividad
         db.execSQL("CREATE TABLE IF NOT EXISTS pagoActividades (" +
                 "nroPago INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "noSocio INTEGER," +
                 "actividad INTEGER," +
                 "monto REAL," +
-                "fechaPago TEXT," +           // YYYY-MM-DD
+                "fechaPago TEXT," +
                 "FOREIGN KEY (noSocio) REFERENCES noSocios(nroNoSocio) ON DELETE CASCADE ON UPDATE CASCADE," +
                 "FOREIGN KEY (actividad) REFERENCES actividades(nroActividad) ON DELETE CASCADE ON UPDATE CASCADE" +
                 ")")
 
         // INSERTS
-
         db.execSQL("INSERT INTO usuarios (nombre, apellido, usuario, email, password) VALUES " +
                 "('Juan', 'Perez', 'admin', 'perezj@mail.com', 'elefante123')")
-        db.execSQL("INSERT INTO socios (nroCarnet, nombre, apellido, dni, fechaNac, genero, numCel, domicilio, fechaIngreso, vencCuota) VALUES " +
-                "(10001, 'Lucia', 'Pérez', 12345678, '1990-05-12', 'Femenino', '1123456789', 'Av. Siempre Viva 123', '2025-04-01', '2025-06-01')," +
-                "(10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', '1198765432', 'Calle Falsa 456', '2025-05-15', '2025-06-15')," +
-                "(10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', '1134567890', 'Pasaje 3 de Febrero', '2025-05-20', '2025-06-20')," +
-                "(10004, 'Pedro', 'Ramirez', 34567891, '1978-12-30', 'Masculino', '1145678901', 'Barrio Centro', '2022-05-20', '2023-06-20')," +
-                "(10005, 'Camila', 'Fernandez', 45678902, '2000-07-14', 'Femenino', '1156789012', 'Zona Norte', '2024-06-01', '2025-07-01')")
+
+        db.execSQL("INSERT INTO socios (nroCarnet, nombre, apellido, dni, fechaNac, genero, mail, numCel, domicilio, aptoFisico, fechaIngreso, vencCuota) VALUES " +
+                "(10001, 'Lucia', 'Pérez', 12345678, '1990-05-12', 'Femenino', 'lucia@mail.com', '1123456789', 'Av. Siempre Viva 123', 1, '2025-04-01', '2025-06-01')," +
+                "(10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', 'juan@mail.com', '1198765432', 'Calle Falsa 456', 1, '2025-05-15', '2025-06-15')," +
+                "(10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', 'ana@mail.com', '1134567890', 'Pasaje 3 de Febrero', 1, '2025-05-20', '2025-06-20')," +
+                "(10004, 'Pedro', 'Ramirez', 34567891, '1978-12-30', 'Masculino', 'pedro@mail.com', '1145678901', 'Barrio Centro', 1, '2022-05-20', '2023-06-20')," +
+                "(10005, 'Camila', 'Fernandez', 45678902, '2000-07-14', 'Femenino', 'camila@mail.com', '1156789012', 'Zona Norte', 1, '2024-06-01', '2025-07-01')")
 
         db.execSQL("INSERT INTO cuotas (nroSocio, fechaVencimiento, fechaPago, importe, metodoPago, cantCuotas) VALUES " +
                 "(10001, '2025-05-01', '2025-05-12', 15000, 'Efectivo', 1)," +
                 "(10002, '2025-06-01', '2025-06-14', 15000, 'Tarjeta', 3)," +
                 "(10003, '2025-06-20', '2025-06-15', 15000, 'Tarjeta', 1)," +
-                "(10004, '2025-06-20', '2025-06-16', 150000, 'Efectivo', 1)," +
+                "(10004, '2025-06-20', '2025-06-16', 15000, 'Efectivo', 1)," +
                 "(10001, '2025-06-01', '2025-06-12', 15000, 'Efectivo', 1)")
 
         db.execSQL("INSERT INTO actividades (nombre, descripcion, costo, dia, horario, cupos) VALUES " +
@@ -114,26 +112,14 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "('Stretching', 'Sesión de elongación para mejorar la flexibilidad', 3000, 'Lunes', '20:00', 12)," +
                 "('Cardio Dance', 'Ejercicio aeróbico al ritmo de música moderna', 2100, 'Martes', '07:30', 25)," +
                 "('Entrenamiento Funcional', 'Sesión intensa para mejorar fuerza y resistencia', 3500, 'Martes', '18:30', 15)," +
-                "('Meditación Guiada', 'Relajación mental y control del estrés', 1900, 'Martes', '21:00', 10)," +
-                "('Zumba', 'Clase de baile con música latina para quemar calorías', 2800, 'Miércoles', '19:00', 25)," +
-                "('HIIT', 'Entrenamiento de intervalos de alta intensidad', 2600, 'Miércoles', '08:00', 20)," +
-                "('Yoga Avanzado', 'Sesión para alumnos con experiencia previa', 2500, 'Miércoles', '20:30', 12)," +
-                "('Pilates', 'Ejercicios de bajo impacto para fortalecer el core', 2500, 'Jueves', '09:00', 10)," +
-                "('Entrenamiento Funcional', 'Entrenamiento en circuito con peso corporal', 3500, 'Jueves', '18:30', 15)," +
-                "('Tai Chi', 'Disciplina suave para equilibrio y concentración', 2100, 'Jueves', '20:00', 18)," +
-                "('Boxeo Recreativo', 'Técnicas básicas de boxeo sin contacto', 3700, 'Viernes', '17:00', 1)," +
-                "('Stretching', 'Elongación muscular para finalizar la semana', 3000, 'Viernes', '08:30', 15)," +
-                "('Ritmos Latinos', 'Clase de salsa y bachata para principiantes', 2200, 'Viernes', '19:30', 20)," +
-                "('Yoga al Aire Libre', 'Clase matutina en el parque', 2500, 'Sábado', '09:00', 30)," +
-                "('CrossFit Básico', 'Entrenamiento funcional con movimientos intensos', 3700, 'Sábado', '11:00', 12)," +
-                "('Zumba Familiar', 'Baile para todas las edades', 2800, 'Sábado', '17:00', 25)")
+                "('Meditación Guiada', 'Relajación mental y control del estrés', 1900, 'Martes', '21:00', 10)")
 
-        db.execSQL("INSERT INTO noSocios (nombre, apellido, dni, fechaNac, genero, numCel, domicilio) VALUES " +
-                "('Juana', 'Pérez', 12345679, '1990-05-12', 'Femenino', '1123456759', 'Av. Siempre Viva 123')," +
-                "('Mario', 'Gómez', 17654321, '1985-09-23', 'Masculino', '1198765422', 'Calle Falsa 456')," +
-                "('Analia', 'Lopez', 23456789, 'Femenino', '1992-03-08', '1134567840', 'Pasaje 3 de Febrero 789')," + // ojo: orden correcto es FechaNac luego Genero
-                "('Patricio', 'Ramirez', 24567890, '1978-12-30', 'Masculino', '1145676901', 'Barrio Centro 12')," +
-                "('Jimena', 'Fernandez', 35678901, '2000-07-14', 'Femenino', '1156729012', 'Zona Norte 334')")
+        db.execSQL("INSERT INTO noSocios (nombre, apellido, dni, fechaNac, genero, mail, numCel, domicilio, aptoFisico) VALUES " +
+                "('Juana', 'Pérez', 12345679, '1990-05-12', 'Femenino', 'juana@mail.com', '1123456759', 'Av. Siempre Viva 123', 1)," +
+                "('Mario', 'Gómez', 17654321, '1985-09-23', 'Masculino', 'mario@mail.com', '1198765422', 'Calle Falsa 456', 1)," +
+                "('Analia', 'Lopez', 23456789, '1992-03-08', 'Femenino', 'analia@mail.com', '1134567840', 'Pasaje 3 de Febrero 789', 1)," +
+                "('Patricio', 'Ramirez', 24567890, '1978-12-30', 'Masculino', 'patricio@mail.com', '1145676901', 'Barrio Centro 12', 1)," +
+                "('Jimena', 'Fernandez', 35678901, '2000-07-14', 'Femenino', 'jimena@mail.com', '1156729012', 'Zona Norte 334', 1)")
 
         db.execSQL("INSERT INTO pagoActividades (noSocio, actividad, monto, fechaPago) VALUES " +
                 "(1, 1, 2000, '2025-06-15')," +
@@ -141,9 +127,8 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "(3, 3, 2200, '2025-06-17')," +
                 "(4, 5, 2700, '2025-06-18')," +
                 "(5, 4, 2300, '2025-06-19')")
-
-
     }
+
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.execSQL("PRAGMA foreign_keys = OFF")
@@ -312,6 +297,78 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         db.close()
         return Triple(false, false, null)
     }
+    // Busca un socio por el nro de carnet/socio y devuelve los datos
+    fun getSocioPorNro(nroCarnet: Int): Socio? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM socios WHERE nroCarnet = ?",
+            arrayOf(nroCarnet.toString())
+        )
+
+        var socio: Socio? = null
+
+        if (cursor.moveToFirst()) {
+            val nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre"))
+            val apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido"))
+            val dni = cursor.getInt(cursor.getColumnIndexOrThrow("dni"))
+            //Levanta fechas en string
+            val fechaNacStr = cursor.getString(cursor.getColumnIndexOrThrow("fechaNac"))
+            val fechaIngresoStr = cursor.getString(cursor.getColumnIndexOrThrow("fechaIngreso"))
+            val vencCuotaStr = cursor.getString(cursor.getColumnIndexOrThrow("vencCuota"))
+            //convierte a LocalDate
+            val fechaNac = LocalDate.parse(fechaNacStr)
+            val fechaIngreso = LocalDate.parse(fechaIngresoStr)
+            val vencCuota = LocalDate.parse(vencCuotaStr)
+
+            val genero = cursor.getString(cursor.getColumnIndexOrThrow("genero"))
+            val mail = cursor.getString(cursor.getColumnIndexOrThrow("mail"))
+            val numCel = cursor.getString(cursor.getColumnIndexOrThrow("numCel"))
+            val domicilio = cursor.getString(cursor.getColumnIndexOrThrow("domicilio"))
+            val aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1
+            val esActivo = cursor.getInt(cursor.getColumnIndexOrThrow("esActivo")) == 1
+            val carnetEntregado = cursor.getInt(cursor.getColumnIndexOrThrow("carnetEntregado")) == 1
+
+            socio = Socio(
+                nroCarnet,
+                nombre,
+                apellido,
+                dni,
+                fechaNac,
+                genero,
+                mail,
+                numCel,
+                domicilio,
+                aptoFisico,
+                fechaIngreso,
+                vencCuota,
+                esActivo,
+                carnetEntregado
+            )
+        }
+
+        cursor.close()
+        db.close()
+        return socio
+    }
+    //ACTUALIZA VENCIMIENTO DE CUOTA DEL SOCIO
+    fun updateVencCuota(nroCarnet: Int, nuevaFecha: LocalDate): Int {
+        val db = this.writableDatabase
+        val values = android.content.ContentValues().apply {
+            put("vencCuota", nuevaFecha.toString()) // LocalDate → "YYYY-MM-DD"
+        }
+
+        val filasActualizadas = db.update(
+            "socios",
+            values,
+            "nroCarnet = ?",
+            arrayOf(nroCarnet.toString())
+        )
+
+        db.close()
+        return filasActualizadas
+    }
+
+
 
     // TABLA CUOTAS
     // devuelve id de la cuota (NroCuota)
@@ -330,6 +387,59 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         db.close()
         return if (rowId == -1L) -1 else rowId.toInt()
     }
+
+    // CONSULTA DE CUOTA CON SOCIO
+    fun getCuotaConSocio(nroCuota: Int): Pair<Cuota, Socio>? {
+        val db = this.readableDatabase
+        val query = """
+        SELECT c.*, s.* 
+        FROM cuotas c
+        INNER JOIN socios s ON c.nroSocio = s.nroCarnet
+        WHERE c.nroCuota = ?
+    """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(nroCuota.toString()))
+        var cuota: Cuota? = null
+        var socio: Socio? = null
+
+        if (cursor.moveToFirst()) {
+            // Cuota
+            val nroCuotaDb = cursor.getInt(cursor.getColumnIndexOrThrow("nroCuota"))
+            val nroSocio = cursor.getInt(cursor.getColumnIndexOrThrow("nroSocio"))
+            val fechaVenc = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fechaVencimiento")))
+            val fechaPagoStr = cursor.getString(cursor.getColumnIndexOrThrow("fechaPago"))
+            val fechaPago = if (fechaPagoStr != null) LocalDate.parse(fechaPagoStr) else null
+            val importe = cursor.getDouble(cursor.getColumnIndexOrThrow("importe"))
+            val metodoPago = cursor.getString(cursor.getColumnIndexOrThrow("metodoPago"))
+            val cantCuotas = cursor.getInt(cursor.getColumnIndexOrThrow("cantCuotas"))
+
+            cuota = Cuota(nroCuotaDb, nroSocio, fechaVenc, fechaPago, importe, metodoPago, cantCuotas)
+
+            // Socio
+            socio = Socio(
+                nroCarnet = cursor.getInt(cursor.getColumnIndexOrThrow("nroCarnet")),
+                nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                dni = cursor.getInt(cursor.getColumnIndexOrThrow("dni")),
+                fechaNac = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fechaNac"))),
+                genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                mail = cursor.getString(cursor.getColumnIndexOrThrow("mail")),
+                numCel = cursor.getString(cursor.getColumnIndexOrThrow("numCel")),
+                domicilio = cursor.getString(cursor.getColumnIndexOrThrow("domicilio")),
+                aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                fechaIngreso = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fechaIngreso"))),
+                vencCuota = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("vencCuota"))),
+                esActivo = cursor.getInt(cursor.getColumnIndexOrThrow("esActivo")) == 1,
+                carnetEntregado = cursor.getInt(cursor.getColumnIndexOrThrow("carnetEntregado")) == 1
+            )
+        }
+
+        cursor.close()
+        db.close()
+
+        return if (cuota != null && socio != null) Pair(cuota, socio) else null
+    }
+
 
 
 }

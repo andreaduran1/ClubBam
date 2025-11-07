@@ -13,6 +13,15 @@ import com.example.clubbam.ui.menu.MenuPrincipalActivity
 import com.example.clubbam.R
 import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.textview.MaterialTextView
+import android.widget.TextView
+import com.example.clubbam.data.DBHelper
+import com.example.clubbam.utils.PdfUtils
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.time.format.DateTimeFormatter
+import java.util.Locale
+
 
 class ComprobantePagoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +43,65 @@ class ComprobantePagoActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        var btnHome = findViewById<Button>(R.id.btnHome)
-        btnHome.setOnClickListener{
-            val intent = Intent(this, MenuPrincipalActivity::class.java)
-            startActivity(intent)
+        val dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.getDefault())
+        val nuevoCliente = intent.getBooleanExtra("nuevoCliente", false)
+        val nroCuota = intent.getIntExtra("nroCuota", -1)
+        val dbHelper = DBHelper(this)
+        val datos = dbHelper.getCuotaConSocio(nroCuota)
+        val (cuota, socio) = datos ?: return
+
+
+        //DATOS PARA DIBUJAR EL COMPROBANTE
+
+        val tvNroComprobante = findViewById<TextView>(R.id.tvNroComprobante)
+        tvNroComprobante.text = "Nº $nroCuota"
+
+        val tvFechaPago = findViewById<TextView>(R.id.tvFechaPago)
+        val fechaPagoStr = cuota.fechaPago?.format(dateFormatter) ?: "No registrada"
+        tvFechaPago.text = "Fecha de pago: $fechaPagoStr"
+
+        val tvNombre = findViewById<TextView>(R.id.tvNombreCarnet)
+        tvNombre.text = "Nombre: ${socio.nombre} ${socio.apellido}"
+        val tvNroDni = findViewById<TextView>(R.id.tvNroDni)
+        tvNroDni.text = "DNI: ${socio.dni}"
+
+        val tvImporte = findViewById<TextView>(R.id.txtImporte)
+        val importeStr = String.format(Locale.getDefault(), "%.2f", cuota.importe)
+        tvImporte.text = "Importe: \$${importeStr}"
+
+        val tvMedioPago = findViewById<TextView>(R.id.txtMedioPago)
+        tvMedioPago.text = "Medio de pago: ${cuota.metodoPago}"
+        val tvCantCuotas = findViewById<TextView>(R.id.txtCantCuotas)
+        tvCantCuotas.text = "Cantidad de cuotas: ${cuota.cantCuotas}"
+
+
+        val btnHome = findViewById<FloatingActionButton>(R.id.btnHome)
+        btnHome.setOnClickListener {
+            if (nuevoCliente) {
+                android.app.AlertDialog.Builder(this)
+                    .setTitle("CARNET DE SOCIO")
+                    .setMessage("¿Desea emitir el carnet de socio?")
+                    .setPositiveButton("Sí") { _, _ ->
+                        val intent = Intent(this, CuotaCarnetActivity::class.java)
+                        //intent.putExtra("nuevoCliente", true)
+                        intent.putExtra("nroSocio", socio.nroCarnet)
+                        startActivity(intent)
+                    }
+                    .setNegativeButton("No") { _, _ ->
+                        val intent = Intent(this, MenuPrincipalActivity::class.java)
+                        startActivity(intent)
+                    }
+                    .show()
+            } else {
+                val intent = Intent(this, MenuPrincipalActivity::class.java)
+                startActivity(intent)
+            }
+        }
+
+        val btnDescargar = findViewById<Button>(R.id.btnDescargar)
+        val cardCentral = findViewById<MaterialCardView>(R.id.cardCentral)
+        btnDescargar.setOnClickListener {
+            PdfUtils.generarPDFdesdeCard(this, cardCentral, "comprobante_pago $nroCuota")
         }
     }
 

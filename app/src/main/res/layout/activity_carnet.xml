@@ -79,7 +79,7 @@
             app:fontFamily="sans-serif-medium" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtNumero"
+            android:id="@+id/tvNumero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -91,7 +91,7 @@
             app:fontFamily="sans-serif-medium" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtNombre"
+            android:id="@+id/tvNombreCarnet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
@@ -115,7 +115,7 @@
             app:fontFamily="sans-serif-regular" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txtNroDni"
+            android:id="@+id/tvNroDni"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
@@ -142,31 +142,28 @@
         android:id="@+id/btnDescargar"
         android:layout_width="158dp"
         android:layout_height="53dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-medium"
         android:text="Descargar"
         android:textColor="@color/colorChipBackground"
         app:cornerRadius="15dp"
         app:icon="@drawable/outline_download_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardCentral" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnHome"
-        android:layout_width="158dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="20dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="Ir a inicio"
-        android:textColor="@color/colorChipBackground"
-        app:cornerRadius="15dp"
-        app:icon="@drawable/outline_home_24"
-        app:layout_constraintEnd_toStartOf="@+id/btnDescargar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardCentral" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
+        android:background="@color/colorPrimaryTomato"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimaryTomato"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/outline_home_24" />
 
 
 

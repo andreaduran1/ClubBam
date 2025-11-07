@@ -11,7 +11,13 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.clubbam.ui.menu.MenuPrincipalActivity
 import com.example.clubbam.R
+import com.example.clubbam.data.DBHelper
 import com.google.android.material.appbar.MaterialToolbar
+import android.widget.TextView
+import com.example.clubbam.utils.PdfUtils
+import com.example.clubbam.ui.perfil.PerfilActivity
+import com.google.android.material.card.MaterialCardView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class CarnetActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,7 +39,25 @@ class CarnetActivity : AppCompatActivity() {
         toolbar.setNavigationOnClickListener {
             finish()
         }
-        var btnHome = findViewById<Button>(R.id.btnHome)
+        val nroSocio = intent.getIntExtra("nroSocio", -1)
+        val dbHelper = DBHelper(this)
+        val socio = dbHelper.getSocioPorNro(nroSocio) ?: return
+        val tvNumero = findViewById<TextView>(R.id.tvNumero)
+        tvNumero.text = socio.nroCarnet.toString()
+        val tvNombreCarnet = findViewById<TextView>(R.id.tvNombreCarnet)
+        tvNombreCarnet.text = "${socio.nombre} ${socio.apellido}"
+        val tvNroDni = findViewById<TextView>(R.id.tvNroDni)
+        tvNroDni.text = socio.dni.toString()
+
+        val btnDescargar = findViewById<Button>(R.id.btnDescargar)
+        val cardCentral = findViewById<MaterialCardView>(R.id.cardCentral)
+        btnDescargar.setOnClickListener {
+            PdfUtils.generarPDFdesdeCard(this, cardCentral, "carnet_socio $nroSocio")
+
+        }
+
+
+        val btnHome = findViewById<FloatingActionButton>(R.id.btnHome)
         btnHome.setOnClickListener{
             val intent = Intent(this, MenuPrincipalActivity::class.java)
             startActivity(intent)

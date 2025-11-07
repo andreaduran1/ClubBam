@@ -3,7 +3,6 @@ package com.example.clubbam.ui.perfil
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
-import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -28,7 +27,7 @@ class PerfilActivity : AppCompatActivity() {
 
             val tvUserName = findViewById<TextView>(R.id.tvUserName)
             val tvNombreApellido = findViewById<TextView>(R.id.tvNombreApellido)
-            val tvNombre = findViewById<TextView>(R.id.tvNombre)
+            val tvNombre = findViewById<TextView>(R.id.tvNombreCarnet)
             val tvApellido = findViewById<TextView>(R.id.tvApellido)
             val tvEmail = findViewById<TextView>(R.id.tvEmail)
 

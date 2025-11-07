@@ -76,7 +76,7 @@
         app:layout_constraintVertical_bias="0.892" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvNombre"
+        android:id="@+id/tvNombreCarnet"
         android:layout_width="308dp"
         android:layout_height="36dp"
         android:layout_marginStart="30dp"
@@ -105,7 +105,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.13"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreCarnet" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvEmail"
@@ -134,7 +134,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNombreCarnet" />
 
     <View
         android:id="@+id/divider2"

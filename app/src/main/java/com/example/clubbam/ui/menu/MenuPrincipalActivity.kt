@@ -27,13 +27,14 @@ class MenuPrincipalActivity : AppCompatActivity() {
         setContentView(R.layout.activity_menu_principal)
         val session = com.example.clubbam.data.SessionManager(this)
         val nombre = session.getNombre()
+        val tvSaludo = findViewById<TextView>(R.id.tvSaludo)
+        tvSaludo.text = "Hola $nombre,"
 
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.menuPrincipal)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            val tvSaludo = findViewById<TextView>(R.id.tvSaludo)
-            tvSaludo.text = "Hola $nombre,"
+
             insets
             }
 
