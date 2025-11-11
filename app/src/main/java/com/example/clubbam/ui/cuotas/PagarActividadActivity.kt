@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -56,16 +57,22 @@ class PagarActividadActivity : AppCompatActivity() {
                 android.util.Log.e("DB", "Error insertando ${actividad.nombre}")
             }
         }*/
+
+        val nroNoSocio = intent.getIntExtra("nroNoSocio", -1)
+        if (nroNoSocio == -1) {
+            Toast.makeText(this, "Falta el número de No Socio", Toast.LENGTH_SHORT).show()
+            finish()
+            return
+        }
+
         val actividadesLista = dbHelper.getActividades()
         Log.d("DB", "Actividades en BD: ${actividadesLista.size}")
-
-
 
 
         // Acá renderizo la lista de actividades
         val rvActividades = findViewById<RecyclerView>(R.id.rvActividades)
         rvActividades.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-        val adapter = ActividadAdapter(actividadesLista)
+        val adapter = ActividadAdapter(actividadesLista, nroNoSocio)
         rvActividades.adapter = adapter
 
 

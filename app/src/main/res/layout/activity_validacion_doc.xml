@@ -76,7 +76,9 @@
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
             android:elevation="12dp"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:inputType="number"
+            android:maxLength="8"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton

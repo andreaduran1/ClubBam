@@ -48,8 +48,8 @@
         android:id="@+id/tvNroSocio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
         android:elevation="12dp"
         android:text="Socio N° 2345 "
         android:textColor="@color/colorText"
@@ -58,14 +58,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtVencimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:elevation="12dp"
+        android:text="Vencimiento:"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNroSocio" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txtVencFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="16dp"
+        android:elevation="12dp"
+        android:text="11/11/2025"
+        android:textColor="@color/colorText"
+        android:textSize="18sp"
+        app:fontFamily="sans-serif-light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNroSocio" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtImporte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="52dp"
         android:elevation="12dp"
         android:text="Ingresá el importe a abonar"
         android:textColor="@color/colorText"
@@ -93,7 +119,8 @@
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
             android:elevation="12dp"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:inputType="numberDecimal"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -115,7 +142,12 @@
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
             android:elevation="12dp"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:inputType="numberDecimal"
+            android:focusable="false"
+            android:cursorVisible="false"
+            android:longClickable="false"
+            android:textIsSelectable="false" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textview.MaterialTextView
@@ -188,6 +220,7 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txtCuotas"
+        android:visibility="gone"
         android:layout_width="302dp"
         android:layout_height="30dp"
         android:layout_marginTop="10dp"
@@ -204,6 +237,7 @@
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/toggleGroup1"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="57dp"
         android:layout_marginTop="8dp"

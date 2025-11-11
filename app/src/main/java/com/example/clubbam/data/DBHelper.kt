@@ -12,7 +12,7 @@ import java.time.LocalDate
 
 
 const val DATABASE_NAME = "ClubBam.db"
-const val DATABASE_VERSION = 13
+const val DATABASE_VERSION = 14
 
 class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -112,7 +112,7 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
                 "('Stretching', 'Sesión de elongación para mejorar la flexibilidad', 3000, 'Lunes', '20:00', 12)," +
                 "('Cardio Dance', 'Ejercicio aeróbico al ritmo de música moderna', 2100, 'Martes', '07:30', 25)," +
                 "('Entrenamiento Funcional', 'Sesión intensa para mejorar fuerza y resistencia', 3500, 'Martes', '18:30', 15)," +
-                "('Meditación Guiada', 'Relajación mental y control del estrés', 1900, 'Martes', '21:00', 10)")
+                "('Meditación Guiada', 'Relajación mental y control del estrés', 1900, 'Martes', '21:00', 1)")
 
         db.execSQL("INSERT INTO noSocios (nombre, apellido, dni, fechaNac, genero, mail, numCel, domicilio, aptoFisico) VALUES " +
                 "('Juana', 'Pérez', 12345679, '1990-05-12', 'Femenino', 'juana@mail.com', '1123456759', 'Av. Siempre Viva 123', 1)," +
@@ -181,6 +181,124 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         db.close()
         return result
     }
+
+    fun registrarPagoActividad(noSocio: Int, actividad: Int, monto: Double): Int {
+        val db = this.writableDatabase
+        val hoy = java.time.LocalDate.now().toString()
+
+        // Duplicado en el día
+        var cursor = db.rawQuery(
+            "SELECT 1 FROM pagoActividades WHERE noSocio = ? AND actividad = ? AND fechaPago = ? LIMIT 1",
+            arrayOf(noSocio.toString(), actividad.toString(), hoy)
+        )
+        val yaPagoHoy = cursor.moveToFirst()
+        cursor.close()
+        if (yaPagoHoy) {
+            db.close()
+            return -2 // código: ya pagó hoy esa actividad
+        }
+
+        // Chequear cupos > 0
+        cursor = db.rawQuery(
+            "SELECT cupos FROM actividades WHERE nroActividad = ?",
+            arrayOf(actividad.toString())
+        )
+        if (!cursor.moveToFirst()) {
+            cursor.close()
+            db.close()
+            return -3 // actividad no existe
+        }
+        val cuposActuales = cursor.getInt(cursor.getColumnIndexOrThrow("cupos"))
+        cursor.close()
+        if (cuposActuales <= 0) {
+            db.close()
+            return -4 // sin cupos
+        }
+
+        // insertar pago y decrementar cupo
+        var resultado = -1
+        db.beginTransaction()
+        try {
+            val values = android.content.ContentValues().apply {
+                put("noSocio", noSocio)
+                put("actividad", actividad)
+                put("monto", monto)
+                put("fechaPago", hoy) // ISO yyyy-MM-dd
+            }
+            val rowId = db.insert("pagoActividades", null, values)
+            if (rowId == -1L) {
+                resultado = -1 // error insert
+            } else {
+                // Decrementar 1 cupo (solo si sigue habiendo > 0)
+                val stmt = db.compileStatement(
+                    "UPDATE actividades SET cupos = cupos - 1 WHERE nroActividad = ? AND cupos > 0"
+                )
+                stmt.bindLong(1, actividad.toLong())
+                val afectadas = stmt.executeUpdateDelete()
+
+                if (afectadas == 1) {
+                    db.setTransactionSuccessful()
+                    resultado = rowId.toInt()
+                } else {
+                    resultado = -5 // no se pudo decrementar cupo
+                }
+            }
+        } finally {
+            db.endTransaction()
+            db.close()
+        }
+        return resultado
+    }
+
+    fun getPagoActividad(nroPago: Int): Triple<Map<String, Any>, Map<String, Any>, String?>? {
+        val db = this.readableDatabase
+        val query = """
+        SELECT pa.*, ns.*, a.nombre AS nombreActividad
+        FROM pagoActividades pa
+        INNER JOIN noSocios ns ON ns.nroNoSocio = pa.noSocio
+        INNER JOIN actividades a ON a.nroActividad = pa.actividad
+        WHERE pa.nroPago = ?
+    """.trimIndent()
+
+        val cursor = db.rawQuery(query, arrayOf(nroPago.toString()))
+        var pago: MutableMap<String, Any>? = null
+        var noSocio: MutableMap<String, Any>? = null
+        var nombreActividad: String? = null
+
+        if (cursor.moveToFirst()) {
+            // Pago
+            pago = mutableMapOf(
+                "nroPago" to cursor.getInt(cursor.getColumnIndexOrThrow("nroPago")),
+                "noSocio" to cursor.getInt(cursor.getColumnIndexOrThrow("noSocio")),
+                "actividad" to cursor.getInt(cursor.getColumnIndexOrThrow("actividad")),
+                "monto" to cursor.getDouble(cursor.getColumnIndexOrThrow("monto")),
+                "fechaPago" to cursor.getString(cursor.getColumnIndexOrThrow("fechaPago"))
+            )
+
+            // No Socio
+            noSocio = mutableMapOf(
+                "nroNoSocio" to cursor.getInt(cursor.getColumnIndexOrThrow("nroNoSocio")),
+                "nombre" to cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                "apellido" to cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                "dni" to cursor.getInt(cursor.getColumnIndexOrThrow("dni")),
+                "fechaNac" to cursor.getString(cursor.getColumnIndexOrThrow("fechaNac")),
+                "genero" to cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                "mail" to cursor.getString(cursor.getColumnIndexOrThrow("mail")),
+                "numCel" to cursor.getString(cursor.getColumnIndexOrThrow("numCel")),
+                "domicilio" to cursor.getString(cursor.getColumnIndexOrThrow("domicilio")),
+                "aptoFisico" to (cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1)
+            )
+
+            nombreActividad = cursor.getString(cursor.getColumnIndexOrThrow("nombreActividad"))
+        }
+
+        cursor.close()
+        db.close()
+
+        return if (pago != null && noSocio != null) Triple(pago, noSocio, nombreActividad) else null
+    }
+
+
 
     // TABLA USUARIOS
     fun insertUsuario(usuario: Usuario): Long {

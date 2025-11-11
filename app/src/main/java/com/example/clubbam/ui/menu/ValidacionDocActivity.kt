@@ -21,6 +21,8 @@ import com.example.clubbam.ui.cuotas.PagarActividadActivity
 import com.example.clubbam.ui.cuotas.PagoCuotaActivity
 import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.appbar.MaterialToolbar
+import java.time.LocalDate
+import java.time.temporal.ChronoUnit
 
 class ValidacionDocActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +54,9 @@ class ValidacionDocActivity : AppCompatActivity() {
             if (dniString.isEmpty()) {
                 Toast.makeText(this, "Este campo no puede estar vacío", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            } else if(dniString.length < 7){
+                Toast.makeText(this, "El DNI tiene que tener al menos 7 dígitos", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
             val dni = dniString.toIntOrNull()
             if (dni == null) {
@@ -63,37 +68,63 @@ class ValidacionDocActivity : AppCompatActivity() {
 
             if (existe) {
                 if (esSocio) {
+                    if (nro == null) {
+                        Toast.makeText(this, "No se pudo obtener el número de socio", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                    val socioObj = dbHelper.getSocioPorNro(nro)
+                    if (socioObj == null) {
+                        Toast.makeText(this, "No se pudo obtener datos del socio", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
+                    // días desde hoy hasta vencCuota (positivo = falta para vencer; negativo = ya venció)
+                    val diasHastaVenc = ChronoUnit.DAYS.between(LocalDate.now(), socioObj.vencCuota)
+
+                    if (diasHastaVenc > 30) {
+                        // No permitir pagar
+                        AlertDialog.Builder(this)
+                            .setTitle("Sin cuota por vencer")
+                            .setMessage(
+                                "El vencimiento de la cuota es el ${socioObj.vencCuota} (faltan ${diasHastaVenc} días). " +
+                                        "Solo se permite pagar cuando el vencimiento ocurre en los próximos 30 días."
+                            )
+                            .setPositiveButton("Aceptar", null)
+                            .show()
+                        return@setOnClickListener
+                    }
+
+                    // OK puede pagar
                     AlertDialog.Builder(this)
                         .setTitle("ATENCIÓN")
-                        .setMessage("El DNI ingresado corresponde a un cliente de tipo Socio nro.: $nro. ¿Desea navegar al pago de cuotas?")
+                        .setMessage("El DNI corresponde a Socio N° $nro.\n¿Desea ir al pago de cuotas?")
                         .setPositiveButton("Sí") { _, _ ->
-                            val intent = Intent(this, PagoCuotaActivity::class.java)
-                            intent.putExtra("nuevoCliente", false)
-                            intent.putExtra("nroSocio", nro)
+                            val intent = Intent(this, PagoCuotaActivity::class.java).apply {
+                                putExtra("nuevoCliente", false)
+                                putExtra("nroSocio", nro)
+                            }
                             startActivity(intent)
                         }
-
-                        .setNegativeButton("No") { _, _ ->
-
-                        }
+                        .setNegativeButton("No", null)
                         .show()
+
                 } else {
                     AlertDialog.Builder(this)
                         .setTitle("ATENCIÓN")
-                        .setMessage("El DNI ingresado corresponde a un cliente de tipo No Socio nro.: $nro. ¿Desea navegar al pago de actividades?")
+                        .setMessage("El DNI corresponde a un cliente No Socio N° $nro.\n¿Desea ir al pago de actividades?")
                         .setPositiveButton("Sí") { _, _ ->
                             val intent = Intent(this, PagarActividadActivity::class.java)
+                            intent.putExtra("nroNoSocio", nro)
                             startActivity(intent)
                         }
-                        .setNegativeButton("No") { _, _ ->
-
-                        }
+                        .setNegativeButton("No", null)
                         .show()
                 }
             } else {
-                val intent = Intent(this, FormularioRegistroActivity::class.java)
-                intent.putExtra("dni", dni)
-                startActivity(intent)
+                val intentReg = Intent(this, FormularioRegistroActivity::class.java)
+                intentReg.putExtra("dni", dni)
+                startActivity(intentReg)
             }
 
 

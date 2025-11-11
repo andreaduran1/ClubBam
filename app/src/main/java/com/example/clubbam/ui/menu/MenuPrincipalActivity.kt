@@ -61,7 +61,8 @@ class MenuPrincipalActivity : AppCompatActivity() {
         //Pagar Actividad---------------------
         val btnPagarActividad = findViewById<Button>(R.id.btnPagarActividad)
         btnPagarActividad.setOnClickListener {
-            val intent = Intent(this, PagarActividadActivity::class.java)
+            val intent = Intent(this, ValidacionDocActivity::class.java)
+            intent.putExtra("nuevoCliente", false)
             startActivity(intent)
         }
         //Listar Cuotas----------------------

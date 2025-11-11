@@ -66,7 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:elevation="12dp"
-        android:text="DNI:"
+        android:text="DNI: "
         android:textColor="@color/colorText"
         android:textSize="20sp"
         app:fontFamily="sans-serif-light"
@@ -91,7 +91,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Nombre"
+        android:hint="Nombre *"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +105,8 @@
             android:layout_height="match_parent"
             android:background="@drawable/rounded_edittext_background"
             android:focusable="true"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -113,7 +114,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Apellido"
+        android:hint="Apellido *"
         app:boxStrokeColor="#00FAF6F6"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
@@ -136,7 +137,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Domicilio"
+        android:hint="Domicilio *"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -158,7 +159,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Email"
+        android:hint="Email *"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -172,7 +173,9 @@
             android:layout_height="59dp"
             android:background="@drawable/rounded_edittext_background"
             android:focusable="true"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:inputType="textEmailAddress"
+           />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -180,7 +183,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Telefono"
+        android:hint="Telefono *"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -195,7 +198,8 @@
             android:background="@drawable/rounded_edittext_background"
             android:focusable="true"
             android:inputType="phone"
-            android:textColor="@color/colorText" />
+            android:textColor="@color/colorText"
+            android:maxLength="10"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -203,7 +207,7 @@
         android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Fecha Nac."
+        android:hint="Fecha Nac. *"
         app:boxStrokeWidth="0dp"
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -238,7 +242,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@color/colorOnError"
-        android:hint="Genero"
+        android:hint="Genero *"
         app:boxBackgroundMode="outline"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -268,7 +272,7 @@
         android:backgroundTint="@color/colorPrimaryTomato"
         android:backgroundTintMode="add"
         android:fontFamily="sans-serif-medium"
-        android:text="Presenta apto físico"
+        android:text="Presenta apto físico *"
         android:textAlignment="viewStart"
         android:textColor="@color/colorTextSecondary"
         app:layout_constraintEnd_toEndOf="parent"
