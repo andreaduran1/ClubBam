@@ -12,9 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ClubBam.Light">
         <activity
-            android:name=".ui.cuotas.ListarSinCuotasActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.cuotas.ListarCuotasActivity"
             android:exported="false" />
         <activity
