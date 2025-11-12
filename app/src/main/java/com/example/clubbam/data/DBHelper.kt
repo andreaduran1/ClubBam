@@ -485,6 +485,39 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
         db.close()
         return filasActualizadas
     }
+    //DEVUELVE LISTA DE SOCIOS CON VENCIMIENTO DE CUOTA EN EL DÍA
+    fun getSociosConVencimientoHoy(db: SQLiteDatabase): List<Socio> {
+        val socios = mutableListOf<Socio>()
+        val hoy = LocalDate.now().toString() // "2025-11-11" por ejemplo
+
+        val query = "SELECT * FROM socios WHERE date(vencCuota) = date(?)"
+        val cursor = db.rawQuery(query, arrayOf(hoy))
+
+        if (cursor.moveToFirst()) {
+            do {
+                val socio = Socio(
+                    nroCarnet = cursor.getInt(cursor.getColumnIndexOrThrow("nroCarnet")),
+                    nombre = cursor.getString(cursor.getColumnIndexOrThrow("nombre")),
+                    apellido = cursor.getString(cursor.getColumnIndexOrThrow("apellido")),
+                    dni = cursor.getInt(cursor.getColumnIndexOrThrow("dni")),
+                    fechaNac = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fechaNac"))),
+                    genero = cursor.getString(cursor.getColumnIndexOrThrow("genero")),
+                    mail = cursor.getString(cursor.getColumnIndexOrThrow("mail")),
+                    numCel = cursor.getString(cursor.getColumnIndexOrThrow("numCel")),
+                    domicilio = cursor.getString(cursor.getColumnIndexOrThrow("domicilio")),
+                    aptoFisico = cursor.getInt(cursor.getColumnIndexOrThrow("aptoFisico")) == 1,
+                    fechaIngreso = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("fechaIngreso"))),
+                    vencCuota = LocalDate.parse(cursor.getString(cursor.getColumnIndexOrThrow("vencCuota"))),
+                    esActivo = cursor.getInt(cursor.getColumnIndexOrThrow("esActivo")) == 1,
+                    carnetEntregado = cursor.getInt(cursor.getColumnIndexOrThrow("carnetEntregado")) == 1
+                )
+                socios.add(socio)
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        return socios
+    }
 
 
 

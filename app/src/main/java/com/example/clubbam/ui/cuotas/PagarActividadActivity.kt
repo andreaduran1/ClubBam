@@ -18,6 +18,8 @@ import com.google.android.material.appbar.MaterialToolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clubbam.data.DBHelper
 import com.example.clubbam.model.Actividad
+import com.example.clubbam.ui.menu.MenuPrincipalActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class PagarActividadActivity : AppCompatActivity() {
@@ -41,22 +43,7 @@ class PagarActividadActivity : AppCompatActivity() {
             finish()
         }
         val dbHelper = DBHelper(this)
-/*
-        // Insertar varias actividades de ejemplo
-        val actividadesEjemplo = listOf(
-            Actividad(0, "Yoga", "Clases de yoga relajante", "Lunes 18:00", 15, 5000.0),
-            Actividad(0, "Zumba", "Ejercicio con ritmo y música", "Martes 19:00", 20, 4500.0),
-            Actividad(0, "Pilates", "Fortalecimiento corporal", "Jueves 17:00", 12, 4800.0)
-        )
 
-        for (actividad in actividadesEjemplo) {
-            val id = dbHelper.insertActividad(actividad)
-            if (id != -1L) {
-                android.util.Log.d("DB", "Insertado ${actividad.nombre} con id $id")
-            } else {
-                android.util.Log.e("DB", "Error insertando ${actividad.nombre}")
-            }
-        }*/
 
         val nroNoSocio = intent.getIntExtra("nroNoSocio", -1)
         if (nroNoSocio == -1) {
@@ -75,27 +62,12 @@ class PagarActividadActivity : AppCompatActivity() {
         val adapter = ActividadAdapter(actividadesLista, nroNoSocio)
         rvActividades.adapter = adapter
 
-
-       /* val actividadesLista = mutableListOf(
-            "YOGA",
-            "ZUMBA",
-            "STREET FIGHTER",
-            "PILATES",
-            "YOGA",
-            "ZUMBA",
-            "STREET FIGHTER",
-
-        )
-        val adapter = ActividadAdapter(actividadesLista)
-        rvActividades.adapter = adapter
-
-
-        //Botones de actividad
-        var btnPagar = findViewById<Button>(R.id.btnPagar)
-        btnPagar.setOnClickListener {
-            val intent = Intent(this, ComprobantePagoActivity::class.java)
+        val btnHome = findViewById<FloatingActionButton>(R.id.btnHome)
+        btnHome.setOnClickListener{
+            val intent = Intent(this, MenuPrincipalActivity::class.java)
             startActivity(intent)
-        }*/
+        }
+
 
     }
 
