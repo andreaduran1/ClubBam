@@ -15,7 +15,6 @@ import com.example.clubbam.data.DBHelper
 import com.google.android.material.appbar.MaterialToolbar
 import android.widget.TextView
 import com.example.clubbam.utils.PdfUtils
-import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

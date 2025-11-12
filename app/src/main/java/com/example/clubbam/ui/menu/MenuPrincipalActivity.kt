@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.clubbam.R
+import com.example.clubbam.data.DBHelper
 import com.example.clubbam.ui.menu.ValidacionDocActivity
 import com.example.clubbam.ui.cuotas.ListarCuotasActivity
+import com.example.clubbam.ui.cuotas.ListarSinCuotasActivity
 import com.example.clubbam.ui.cuotas.PagarActividadActivity
 import com.example.clubbam.ui.perfil.PerfilActivity
 import com.google.android.material.appbar.MaterialToolbar
@@ -66,11 +68,21 @@ class MenuPrincipalActivity : AppCompatActivity() {
             startActivity(intent)
         }
         //Listar Cuotas----------------------
+        val dbHelper = DBHelper(this)
+        val sociosVencCuota = dbHelper.getSociosConVencimientoHoy(dbHelper.readableDatabase)
+
         val btnListarCuotas = findViewById<Button>(R.id.btnListarCuotas)
         btnListarCuotas.setOnClickListener {
-            val intent = Intent(this, ListarCuotasActivity::class.java)
-            startActivity(intent)
+            if (sociosVencCuota.isNotEmpty()) {
+                val intent = Intent(this, ListarCuotasActivity::class.java)
+                startActivity(intent)
+            }
+            else {
+                val intent = Intent(this, ListarSinCuotasActivity::class.java)
+                startActivity(intent)
+            }
         }
+
 
     }
 

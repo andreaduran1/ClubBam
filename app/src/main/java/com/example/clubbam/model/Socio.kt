@@ -16,5 +16,6 @@ class Socio(
     var fechaIngreso: LocalDate,
     var vencCuota: LocalDate,
     var esActivo: Boolean,
-    var carnetEntregado: Boolean
+    var carnetEntregado: Boolean,
+    var estaSeleccionado : Boolean = false
 )
