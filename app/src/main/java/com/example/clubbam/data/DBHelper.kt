@@ -12,7 +12,7 @@ import java.time.LocalDate
 
 
 const val DATABASE_NAME = "ClubBam.db"
-const val DATABASE_VERSION = 14
+const val DATABASE_VERSION = 18
 
 class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -90,12 +90,12 @@ class DBHelper (context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, nul
 
         // INSERTS
         db.execSQL("INSERT INTO usuarios (nombre, apellido, usuario, email, password) VALUES " +
-                "('Juan', 'Perez', 'admin', 'perezj@mail.com', 'elefante123')")
+                "('Joaquin', 'Perez', 'admin', 'perezj@mail.com', 'elefante123')")
 
         db.execSQL("INSERT INTO socios (nroCarnet, nombre, apellido, dni, fechaNac, genero, mail, numCel, domicilio, aptoFisico, fechaIngreso, vencCuota) VALUES " +
-                "(10001, 'Lucia', 'Pérez', 12345678, '1990-05-12', 'Femenino', 'lucia@mail.com', '1123456789', 'Av. Siempre Viva 123', 1, '2025-04-01', '2025-06-01')," +
-                "(10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', 'juan@mail.com', '1198765432', 'Calle Falsa 456', 1, '2025-05-15', '2025-06-15')," +
-                "(10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', 'ana@mail.com', '1134567890', 'Pasaje 3 de Febrero', 1, '2025-05-20', '2025-06-20')," +
+                "(10001, 'Lucia', 'Pérez', 12345678, '1990-05-12', 'Femenino', 'lucia@mail.com', '1123456789', 'Av. Siempre Viva 123', 1, '2025-04-01', date('now'))," +
+                "(10002, 'Juan', 'Gómez', 27654321, '1985-09-23', 'Masculino', 'juan@mail.com', '1198765432', 'Calle Falsa 456', 1, '2025-05-15', date('now'))," +
+                "(10003, 'Ana', 'Lopez', 23456789, '1992-03-08', 'Femenino', 'ana@mail.com', '1134567890', 'Pasaje 3 de Febrero', 1, '2025-05-20', date('now'))," +
                 "(10004, 'Pedro', 'Ramirez', 34567891, '1978-12-30', 'Masculino', 'pedro@mail.com', '1145678901', 'Barrio Centro', 1, '2022-05-20', '2023-06-20')," +
                 "(10005, 'Camila', 'Fernandez', 45678902, '2000-07-14', 'Femenino', 'camila@mail.com', '1156789012', 'Zona Norte', 1, '2024-06-01', '2025-07-01')")
 
